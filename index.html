@@ -142,19 +142,45 @@
         }
         
         .feature-card.large {
-            background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(52, 152, 219, 0.8)), 
-                        url('https://static.wixstatic.com/media/32c95b_c82676369a3b4b9fae6407eb336871ec~mv2.webp');
+            background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(52, 152, 219, 0.8));
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature-card.large::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('https://static.wixstatic.com/media/32c95b_c82676369a3b4b9fae6407eb336871ec~mv2.webp');
             background-size: cover;
             background-position: center;
-            color: white;
+            opacity: 0.3;
+            z-index: -1;
         }
         
         .feature-card.yellow {
-            background: linear-gradient(rgba(243, 156, 18, 0.9), rgba(230, 126, 34, 0.9)), 
-                        url('https://static.wixstatic.com/media/32c95b_b9de4af1e8a84ec2a6ccb4cb636bf869~mv2.webp');
+            background: linear-gradient(rgba(243, 156, 18, 0.9), rgba(230, 126, 34, 0.9));
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature-card.yellow::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('https://static.wixstatic.com/media/32c95b_b9de4af1e8a84ec2a6ccb4cb636bf869~mv2.webp');
             background-size: cover;
             background-position: center;
-            color: white;
+            opacity: 0.2;
+            z-index: -1;
         }
         
         .feature-title {
@@ -310,13 +336,14 @@
         }
         
         /* Animaciones */
+        /* Optimización de rendimiento - transiciones más eficientes */
         .feature-card {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.2s ease;
+            will-change: transform;
         }
         
         .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+            transform: translateY(-3px);
         }
         
         /* Efectos visuales adicionales removidos */
@@ -341,7 +368,7 @@
                     <span class="new-price">$99 MXN</span>
                 </div>
                 
-                <button class="buy-button" onclick="comprarAhora()">Comprar Ahora</button>
+                <button class="buy-button">Comprar Ahora</button>
                 
                 <div class="tagline">¡La práctica te lleva a la perfección!</div>
             </div>
@@ -408,25 +435,6 @@
             </div>
         </div>
     </div>
-    
-    <script>
-        function comprarAhora() {
-            // Aquí puedes agregar la lógica de compra
-            alert('Redirigiendo al proceso de compra...');
-            // window.location.href = 'https://tu-plataforma-de-pago.com';
-        }
-        
-        // Animación de scroll suave
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-        
-        // Efecto de parallax removido para evitar movimiento no deseado
-    </script>
+
 </body>
 </html>
