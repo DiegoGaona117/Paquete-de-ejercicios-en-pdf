@@ -389,7 +389,12 @@ function calculateOverallRating(comments) {
 // ===========================================
 // RENDER FUNCTIONS
 // ===========================================
+let commentsLoaded = false; // Bandera para cargar solo una vez
+
 function renderComments() {
+    if (commentsLoaded) return; // Evitar cargar múltiples veces
+    commentsLoaded = true;
+    
     const container = document.getElementById('commentsContainer');
     const loading = document.getElementById('loading');
     
@@ -427,12 +432,45 @@ function renderComments() {
                 <div class="comment-text">${comment.comment || 'Sin comentario adicional'}</div>
             </div>
         `).join('');
-    }, 1000);
+    }, 500);
+}
+
+// ===========================================
+// LAZY LOADING - INTERSECTION OBSERVER
+// ===========================================
+function initLazyLoadComments() {
+    const reviewsSection = document.querySelector('.reviews-section');
+    
+    if (!reviewsSection) {
+        console.error('No se encontró la sección de reviews');
+        return;
+    }
+
+    // Configurar el Intersection Observer
+    const observerOptions = {
+        root: null, // viewport
+        rootMargin: '200px', // Cargar 200px antes de que sea visible
+        threshold: 0.1 // 10% visible
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !commentsLoaded) {
+                console.log('Sección de comentarios visible, cargando...');
+                renderComments();
+                observer.unobserve(reviewsSection); // Dejar de observar después de cargar
+            }
+        });
+    }, observerOptions);
+
+    // Empezar a observar la sección de reviews
+    observer.observe(reviewsSection);
 }
 
 // ===========================================
 // INITIALIZATION
 // ===========================================
 document.addEventListener('DOMContentLoaded', function() {
-    renderComments();
+    console.log('DOM cargado, iniciando lazy load...');
+    initLazyLoadComments();
 });
