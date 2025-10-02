@@ -371,7 +371,8 @@
         }
         
         .plans-image {
-            width: 100%;
+            max-width: 750 px;
+            margin: auto;
             height: auto;
             display: block;
             transition: transform 0.3s ease;
