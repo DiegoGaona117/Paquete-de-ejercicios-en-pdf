@@ -155,16 +155,26 @@
                 
                 <div class="plans-showcase">
                     <p class="subtitle"><strong>Planos en PDF que incluye este paquete</strong></p>
-                    <img src="https://static.wixstatic.com/media/32c95b_e2a09fdfc6d24c88a8e46118e156c8f1~mv2.webp" 
-                         alt="Ejemplos de planos técnicos de SolidWorks" 
-                         class="plans-image"
-                         referrerpolicy="no-referrer"
-                         loading="lazy"
-                         width="1200"
-                         height="800">
+                    <picture>
+                        <!-- Imagen para móvil (se carga en pantallas menores a 768px) -->
+                        <source media="(max-width: 767px)" 
+                                srcset="https://static.wixstatic.com/media/32c95b_e2a09fdfc6d24c88a8e46118e156c8f1~mv2.webp/v1/fill/w_600,h_400,al_c,q_80/imagen-mobile.webp">
+                        
+                        <!-- Imagen para tablet (se carga en pantallas de 768px a 1023px) -->
+                        <source media="(min-width: 768px) and (max-width: 1023px)" 
+                                srcset="https://static.wixstatic.com/media/32c95b_e2a09fdfc6d24c88a8e46118e156c8f1~mv2.webp/v1/fill/w_900,h_600,al_c,q_85/imagen-tablet.webp">
+                        
+                        <!-- Imagen para escritorio (por defecto, pantallas mayores a 1024px) -->
+                        <img src="https://static.wixstatic.com/media/32c95b_e2a09fdfc6d24c88a8e46118e156c8f1~mv2.webp" 
+                             alt="Ejemplos de planos técnicos de SolidWorks" 
+                             class="plans-image"
+                             referrerpolicy="no-referrer"
+                             loading="lazy"
+                             width="1200"
+                             height="800">
+                    </picture>
                     <div class="image-overlay"></div>
                 </div>
-                
             </div>
         </section>
 
