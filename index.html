@@ -138,12 +138,23 @@
             <div class="content-wrapper">
                 <div class="header-content">
                     <div class="solidworks-logo">
-                        <img src="https://static.wixstatic.com/media/32c95b_1b9e11a1e9c24ae6b833d9f439089d82~mv2.webp" 
-                             alt="SolidWorks 2022 Logo" 
-                             referrerpolicy="no-referrer"
-                             loading="lazy"
-                             width="400"
-                             height="200">
+                        <picture>
+                            <!-- Móvil (menos de 500px) -->
+                            <source media="(max-width: 499px)" 
+                                    srcset="https://static.wixstatic.com/media/32c95b_1fb5d39a16d2429aa1544093b5b87170~mv2.webp">
+                            
+                            <!-- Tablet (500px a 1024px) -->
+                            <source media="(min-width: 500px) and (max-width: 1024px)" 
+                                    srcset="https://static.wixstatic.com/media/32c95b_5aa4416daa504e57a95505a08d6e37f4~mv2.webp">
+                            
+                            <!-- Desktop (más de 1024px) -->
+                            <img src="https://static.wixstatic.com/media/32c95b_5aa4416daa504e57a95505a08d6e37f4~mv2.webp" 
+                                 alt="SolidWorks 2022 Logo" 
+                                 referrerpolicy="no-referrer"
+                                 loading="lazy"
+                                 width="400"
+                                 height="200">
+                        </picture>
                     </div>
                     <div class="header-text">
                         <h2 class="main-title">
