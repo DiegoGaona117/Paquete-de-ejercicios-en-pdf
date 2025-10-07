@@ -166,6 +166,42 @@
                 </div>
             </div>
         </section>
+        <!-- Evento Meta Pixel: Scroll Bottom -->
+<script>
+    // Función para enviar el evento a Meta Pixel
+    function sendScrollBottomEvent() {
+        if (typeof fbq !== 'undefined') {
+            fbq('trackCustom', 'Scroll Bottom');
+            console.log('✅ Evento "Scroll Bottom" enviado a Meta Pixel');
+        }
+    }
+
+    // Configurar Intersection Observer
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            // Si el elemento es visible en pantalla
+            if (entry.isIntersecting) {
+                sendScrollBottomEvent();
+                // Dejar de observar para que solo se envíe una vez
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        // El evento se dispara cuando el 50% del elemento es visible
+        threshold: 0.5
+    });
+
+    // Esperar a que cargue el DOM
+    document.addEventListener('DOMContentLoaded', function() {
+        // Buscar el elemento por su clase
+        const plansSection = document.querySelector('.plans-showcase');
+        
+        if (plansSection) {
+            // Comenzar a observar el elemento
+            observer.observe(plansSection);
+        }
+    });
+</script>
 
         <!-- Reviews Section -->
         <section class="reviews-section">
