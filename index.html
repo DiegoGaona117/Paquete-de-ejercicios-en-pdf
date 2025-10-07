@@ -167,64 +167,61 @@
             </div>
         </section>
 
-        <!-- Evento Meta Pixel: Scroll Bottom -->
+       <!-- Evento Meta Pixel: Scroll Bottom -->
 <script>
-    // Variable para asegurar que solo se envíe una vez
-    let scrollEventSent = false;
+(function() {
+    'use strict';
+    
+    let eventSent = false;
 
-    // Función para enviar el evento a Meta Pixel
-    function sendScrollBottomEvent() {
-        // Evitar envíos duplicados
-        if (scrollEventSent) return;
+    function sendEvent() {
+        if (eventSent) return;
         
         if (typeof fbq !== 'undefined') {
             fbq('trackCustom', 'Scroll Bottom');
-            scrollEventSent = true;
+            eventSent = true;
             console.log('✅ Evento "Scroll Bottom" enviado a Meta Pixel');
         } else {
-            console.warn('⚠️ Meta Pixel (fbq) no está disponible');
+            console.warn('⚠️ Meta Pixel no disponible');
         }
     }
 
-    // Configurar Intersection Observer
-    function initScrollObserver() {
-        const plansSection = document.querySelector('.plans-showcase');
+    function init() {
+        const target = document.querySelector('.plans-showcase');
         
-        if (!plansSection) {
-            console.warn('⚠️ No se encontró el elemento .plans-showcase');
+        if (!target) {
+            console.warn('⚠️ No se encontró .plans-showcase');
             return;
         }
 
         console.log('👀 Observando la sección de planos...');
 
-        // Declarar observer DENTRO de la función
-        const observerInstance = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                console.log('📊 Visibilidad:', (entry.intersectionRatio * 100).toFixed(0) + '%');
+        const obs = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                const visibilityPercent = Math.round(entry.intersectionRatio * 100);
+                console.log('📊 Visibilidad de planos:', visibilityPercent + '%');
                 
-                // Si el elemento es visible en pantalla
-                if (entry.isIntersecting && !scrollEventSent) {
-                    console.log('✨ Sección visible, enviando evento...');
-                    sendScrollBottomEvent();
-                    // Dejar de observar usando observerInstance
-                    observerInstance.unobserve(entry.target);
+                // Si el elemento tiene al menos 20% de visibilidad
+                if (entry.intersectionRatio > 0.2 && !eventSent) {
+                    console.log('✨ Enviando evento Scroll Bottom...');
+                    sendEvent();
+                    obs.disconnect();
                 }
             });
-        }, {
-            threshold: 0.3,
+        }, { 
+            threshold: [0, 0.2, 0.3, 0.5, 0.7, 1.0],
             rootMargin: '0px'
         });
 
-        // Comenzar a observar
-        observerInstance.observe(plansSection);
+        obs.observe(target);
     }
 
-    // Inicializar cuando el DOM esté listo
     if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initScrollObserver);
+        document.addEventListener('DOMContentLoaded', init);
     } else {
-        initScrollObserver();
+        init();
     }
+})();
 </script>
 
         <!-- Reviews Section -->
