@@ -166,7 +166,8 @@
                 </div>
             </div>
         </section>
- <!-- Evento Meta Pixel: Scroll Bottom -->
+
+        <!-- Evento Meta Pixel: Scroll Bottom -->
 <script>
     // Variable para asegurar que solo se envíe una vez
     let scrollEventSent = false;
@@ -196,7 +197,8 @@
 
         console.log('👀 Observando la sección de planos...');
 
-        const observer = new IntersectionObserver((entries) => {
+        // Declarar observer DENTRO de la función
+        const observerInstance = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 console.log('📊 Visibilidad:', (entry.intersectionRatio * 100).toFixed(0) + '%');
                 
@@ -204,25 +206,23 @@
                 if (entry.isIntersecting && !scrollEventSent) {
                     console.log('✨ Sección visible, enviando evento...');
                     sendScrollBottomEvent();
-                    // Dejar de observar
-                    observer.unobserve(entry.target);
+                    // Dejar de observar usando observerInstance
+                    observerInstance.unobserve(entry.target);
                 }
             });
         }, {
-            // El evento se dispara cuando el 30% del elemento es visible
             threshold: 0.3,
-            // Margen adicional para activar antes
             rootMargin: '0px'
         });
 
-        observer.observe(plansSection);
+        // Comenzar a observar
+        observerInstance.observe(plansSection);
     }
 
     // Inicializar cuando el DOM esté listo
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', initScrollObserver);
     } else {
-        // El DOM ya está cargado
         initScrollObserver();
     }
 </script>
