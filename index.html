@@ -173,6 +173,7 @@
     'use strict';
     
     let eventSent = false;
+    const SCROLL_PERCENTAGE = 75; // Porcentaje de scroll para activar
 
     function sendEvent() {
         if (eventSent) return;
@@ -186,44 +187,41 @@
         }
     }
 
-    function init() {
-        const target = document.querySelector('.plans-showcase');
+    function calculateScrollPercentage() {
+        const windowHeight = window.innerHeight;
+        const documentHeight = document.documentElement.scrollHeight;
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
         
-        if (!target) {
-            console.warn('⚠️ No se encontró .plans-showcase');
-            return;
+        // Calcular el porcentaje de scroll
+        const scrollableHeight = documentHeight - windowHeight;
+        const scrolled = (scrollTop / scrollableHeight) * 100;
+        
+        return Math.round(scrolled);
+    }
+
+    function handleScroll() {
+        if (eventSent) return;
+        
+        const scrollPercent = calculateScrollPercentage();
+        console.log('📊 Scroll:', scrollPercent + '%');
+        
+        if (scrollPercent >= SCROLL_PERCENTAGE) {
+            console.log('✨ Usuario llegó al ' + SCROLL_PERCENTAGE + '% de la página');
+            sendEvent();
+            // Remover el listener para ahorrar recursos
+            window.removeEventListener('scroll', handleScroll);
         }
-
-        console.log('👀 Observando la sección de planos...');
-
-        const obs = new IntersectionObserver(function(entries) {
-            entries.forEach(function(entry) {
-                const visibilityPercent = Math.round(entry.intersectionRatio * 100);
-                console.log('📊 Visibilidad de planos:', visibilityPercent + '%');
-                
-                // Si el elemento tiene al menos 20% de visibilidad
-                if (entry.intersectionRatio > 0.2 && !eventSent) {
-                    console.log('✨ Enviando evento Scroll Bottom...');
-                    sendEvent();
-                    obs.disconnect();
-                }
-            });
-        }, { 
-            threshold: [0, 0.2, 0.3, 0.5, 0.7, 1.0],
-            rootMargin: '0px'
-        });
-
-        obs.observe(target);
     }
 
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', init);
-    } else {
-        init();
-    }
+    // Agregar listener de scroll
+    window.addEventListener('scroll', handleScroll);
+    
+    // Verificar inmediatamente por si ya está en esa posición
+    handleScroll();
+    
+    console.log('👀 Detectando scroll de página (activación al ' + SCROLL_PERCENTAGE + '%)');
 })();
 </script>
-
         <!-- Reviews Section -->
         <section class="reviews-section">
             <div class="reviews-container">
