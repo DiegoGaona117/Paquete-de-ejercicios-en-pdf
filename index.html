@@ -166,41 +166,65 @@
                 </div>
             </div>
         </section>
-        <!-- Evento Meta Pixel: Scroll Bottom -->
+ <!-- Evento Meta Pixel: Scroll Bottom -->
 <script>
+    // Variable para asegurar que solo se envíe una vez
+    let scrollEventSent = false;
+
     // Función para enviar el evento a Meta Pixel
     function sendScrollBottomEvent() {
+        // Evitar envíos duplicados
+        if (scrollEventSent) return;
+        
         if (typeof fbq !== 'undefined') {
             fbq('trackCustom', 'Scroll Bottom');
+            scrollEventSent = true;
             console.log('✅ Evento "Scroll Bottom" enviado a Meta Pixel');
+        } else {
+            console.warn('⚠️ Meta Pixel (fbq) no está disponible');
         }
     }
 
     // Configurar Intersection Observer
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            // Si el elemento es visible en pantalla
-            if (entry.isIntersecting) {
-                sendScrollBottomEvent();
-                // Dejar de observar para que solo se envíe una vez
-                observer.unobserve(entry.target);
-            }
-        });
-    }, {
-        // El evento se dispara cuando el 50% del elemento es visible
-        threshold: 0.5
-    });
-
-    // Esperar a que cargue el DOM
-    document.addEventListener('DOMContentLoaded', function() {
-        // Buscar el elemento por su clase
+    function initScrollObserver() {
         const plansSection = document.querySelector('.plans-showcase');
         
-        if (plansSection) {
-            // Comenzar a observar el elemento
-            observer.observe(plansSection);
+        if (!plansSection) {
+            console.warn('⚠️ No se encontró el elemento .plans-showcase');
+            return;
         }
-    });
+
+        console.log('👀 Observando la sección de planos...');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                console.log('📊 Visibilidad:', (entry.intersectionRatio * 100).toFixed(0) + '%');
+                
+                // Si el elemento es visible en pantalla
+                if (entry.isIntersecting && !scrollEventSent) {
+                    console.log('✨ Sección visible, enviando evento...');
+                    sendScrollBottomEvent();
+                    // Dejar de observar
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            // El evento se dispara cuando el 30% del elemento es visible
+            threshold: 0.3,
+            // Margen adicional para activar antes
+            rootMargin: '0px'
+        });
+
+        observer.observe(plansSection);
+    }
+
+    // Inicializar cuando el DOM esté listo
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initScrollObserver);
+    } else {
+        // El DOM ya está cargado
+        initScrollObserver();
+    }
 </script>
 
         <!-- Reviews Section -->
