@@ -286,16 +286,16 @@
         document.addEventListener("DOMContentLoaded",function(){console.log("DOM cargado, iniciando lazy load..."),initLazyLoadComments()});
     </script>
 
-    <!-- EVENTO META PIXEL Y MAKE WEBHOOK: SCROLL 75% -->
+    <!-- EVENTO META PIXEL Y MAKE WEBHOOK: SCROLL 75% + ORDER CODE -->
     <script>
     (function() {
         'use strict';
         
         const MAKE_WEBHOOK = 'https://hook.us1.make.com/fyli8y7tmxu6mtqf7byp9vy2g3cji3wa';
-        let eventSent = false;
         const SCROLL_PERCENTAGE = 75; 
+        let eventSent = false;
 
-        // --- NUEVO: GENERACIÓN Y RECUPERACIÓN DE ORDER CODE ---
+        // --- GENERACIÓN Y RECUPERACIÓN DE ORDER CODE ---
         function generateOrderCode() {
             const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
             let code = 'PL-';
@@ -312,7 +312,6 @@
         }
 
         const ORDER_CODE = getOrCreateOrderCode();
-        // ------------------------------------------------------
 
         // Funciones de ayuda para obtener datos de rastreo
         function getCookie(name) {
@@ -346,9 +345,17 @@
         }
 
         async function sendEvent() {
+            // 🛑 VERIFICACIÓN: Si ya se envió antes en esta u otra sesión, detenemos el código aquí
+            if (localStorage.getItem('scroll_75_enviado')) {
+                return; // Ya se envió antes, no hacer nada.
+            }
+
             if (eventSent) return;
-            eventSent = true; // Previene envíos múltiples
+            eventSent = true; 
             
+            // Ponemos el "candado" en localStorage para futuras visitas/recargas
+            localStorage.setItem('scroll_75_enviado', 'true');
+
             // Recopilamos la data en segundo plano
             const fbp = getCookie('_fbp') || null;
             const fbc = getFbc();
@@ -367,7 +374,7 @@
                 console.warn('⚠️ Meta Pixel no disponible');
             }
 
-            // 2. Enviar los mismos datos a tu webhook de Make para cruzar data en API de Conversiones
+            // 2. Enviar los mismos datos a tu webhook de Make
             fetch(MAKE_WEBHOOK, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -391,7 +398,7 @@
                     geo_lng: geo.geo_lng
                 })
             })
-            .then(() => console.log('✅ Datos de prospecto premium enviados a Make'))
+            .then(() => console.log('✅ Datos de prospecto premium (Scroll 75%) enviados a Make con order_code:', ORDER_CODE))
             .catch(e => console.error('Error enviando a Make:', e));
         }
 
@@ -407,7 +414,7 @@
         }
 
         function handleScroll() {
-            if (eventSent) return;
+            if (eventSent || localStorage.getItem('scroll_75_enviado')) return;
             
             const scrollPercent = calculateScrollPercentage();
             
@@ -419,60 +426,8 @@
         }
 
         window.addEventListener('scroll', handleScroll);
+        // Validar desde el inicio por si el usuario recarga la página ya estando abajo
         handleScroll();
-        
-        // --- NUEVO: RASTREO DEL BOTÓN DE MUESTRA GRATUITA ---
-        const btnMuestra = document.getElementById('btnMuestraGratis');
-        if (btnMuestra) {
-            btnMuestra.addEventListener('click', async function() {
-                // 🛑 VERIFICACIÓN: Si ya se envió antes, detenemos el código aquí
-                if (localStorage.getItem('muestra_gratis_enviado')) {
-                    console.log('ℹ️ Evento "ClicMuestraGratuita" ya fue registrado anteriormente.');
-                    return;
-                }
-                
-                // Ponemos el "candado" inmediatamente para evitar clics dobles rápidos
-                localStorage.setItem('muestra_gratis_enviado', 'true');
-
-                // Al hacer clic, abre el Drive en nueva pestaña, pero en segundo plano mandamos la data
-                const fbp = getCookie('_fbp') || null;
-                const fbc = getFbc();
-                
-                // 1. Disparamos a Meta inmediatamente como Evento Personalizado (No afecta optimización)
-                if (typeof fbq !== 'undefined') {
-                    fbq('trackCustom', 'ClicMuestraGratuita', {
-                        content_name: 'Muestras Gratis Drive'
-                    });
-                    console.log('✅ Evento "ClicMuestraGratuita" enviado a Meta Pixel');
-                }
-
-                // 2. Obtenemos geo data y enviamos todo a tu Make
-                const geo = await getGeoData();
-                fetch(MAKE_WEBHOOK, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        evento: 'ClicMuestraGratuita',
-                        order_code: ORDER_CODE,
-                        timestamp: new Date().toISOString(),
-                        producto: 'Muestra Gratis Drive',
-                        valor: 0,
-                        moneda: 'MXN',
-                        fbp: fbp,
-                        fbc: fbc,
-                        client_ip: geo.client_ip,
-                        client_user_agent: navigator.userAgent,
-                        geo_ciudad: geo.geo_ciudad,
-                        geo_region: geo.geo_region,
-                        geo_pais: geo.geo_pais,
-                        geo_pais_code: geo.geo_pais_code,
-                        geo_cp: geo.geo_cp,
-                        geo_lat: geo.geo_lat,
-                        geo_lng: geo.geo_lng
-                    })
-                }).catch(e => console.error('Error enviando a Make:', e));
-            });
-        }
         
     })();
     </script>
