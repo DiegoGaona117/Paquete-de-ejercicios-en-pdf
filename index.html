@@ -17,7 +17,7 @@
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📚</text></svg>">
    
     <title>Planos Técnicos SolidWorks en PDF | +200 Ejercicios | Diego Gaona</title> 
-    
+  
     <!-- Meta Pixel Code -->
     <script>
         !function(f,b,e,v,n,t,s)
@@ -286,16 +286,16 @@
         document.addEventListener("DOMContentLoaded",function(){console.log("DOM cargado, iniciando lazy load..."),initLazyLoadComments()});
     </script>
 
-    <!-- EVENTO META PIXEL Y MAKE WEBHOOK: SCROLL 75% + ORDER CODE -->
+    <!-- EVENTO META PIXEL: SCROLL 75% + ORDER CODE -->
     <script>
     (function() {
         'use strict';
         
-        const MAKE_WEBHOOK = 'https://hook.us1.make.com/fyli8y7tmxu6mtqf7byp9vy2g3cji3wa';
         const SCROLL_PERCENTAGE = 75; 
         let eventSent = false;
 
         // --- GENERACIÓN Y RECUPERACIÓN DE ORDER CODE ---
+        // Se mantiene para no afectar la deduplicación de eventos en pasos posteriores del embudo
         function generateOrderCode() {
             const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
             let code = 'PL-';
@@ -311,43 +311,13 @@
             return newCode;
         }
 
-        const ORDER_CODE = getOrCreateOrderCode();
+        // Generamos o recuperamos el código para que quede guardado en el localStorage
+        getOrCreateOrderCode();
 
-        // Funciones de ayuda para obtener datos de rastreo
-        function getCookie(name) {
-            const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
-            return match ? decodeURIComponent(match[2]) : null;
-        }
-
-        function getFbc() {
-            const fbclid = new URLSearchParams(window.location.search).get('fbclid');
-            if (fbclid) return 'fb.1.' + Date.now() + '.' + fbclid;
-            return getCookie('_fbc') || null;
-        }
-
-        async function getGeoData() {
-            try {
-                const res  = await fetch('https://ipapi.co/json/');
-                const data = await res.json();
-                return {
-                    client_ip:     data.ip            || null,
-                    geo_ciudad:    data.city          || null,
-                    geo_region:    data.region        || null,
-                    geo_pais:      data.country_name  || null,
-                    geo_pais_code: data.country       || null,
-                    geo_cp:        data.postal        || null,
-                    geo_lat:       data.latitude      || null,
-                    geo_lng:       data.longitude     || null,
-                };
-            } catch (e) {
-                return { client_ip: null, geo_ciudad: null, geo_region: null, geo_pais: null, geo_pais_code: null, geo_cp: null, geo_lat: null, geo_lng: null };
-            }
-        }
-
-        async function sendEvent() {
+        function sendEvent() {
             // 🛑 VERIFICACIÓN: Si ya se envió antes en esta u otra sesión, detenemos el código aquí
             if (localStorage.getItem('scroll_75_enviado')) {
-                return; // Ya se envió antes, no hacer nada.
+                return; 
             }
 
             if (eventSent) return;
@@ -356,12 +326,7 @@
             // Ponemos el "candado" en localStorage para futuras visitas/recargas
             localStorage.setItem('scroll_75_enviado', 'true');
 
-            // Recopilamos la data en segundo plano
-            const fbp = getCookie('_fbp') || null;
-            const fbc = getFbc();
-            const geo = await getGeoData();
-
-            // 1. Enviar evento estructurado a Meta Pixel
+            // 1. Enviar evento estructurado exclusivamente a Meta Pixel
             if (typeof fbq !== 'undefined') {
                 fbq('track', 'ViewContent', {
                     content_name: 'Paquete de Planos PDF - Lectura 75%',
@@ -373,33 +338,6 @@
             } else {
                 console.warn('⚠️ Meta Pixel no disponible');
             }
-
-            // 2. Enviar los mismos datos a tu webhook de Make
-            fetch(MAKE_WEBHOOK, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    evento: 'ViewContent',
-                    order_code: ORDER_CODE,
-                    timestamp: new Date().toISOString(),
-                    producto: 'Paquete Planos PDF - Lectura 75%',
-                    valor: 50,
-                    moneda: 'MXN',
-                    fbp: fbp,
-                    fbc: fbc,
-                    client_ip: geo.client_ip,
-                    client_user_agent: navigator.userAgent,
-                    geo_ciudad: geo.geo_ciudad,
-                    geo_region: geo.geo_region,
-                    geo_pais: geo.geo_pais,
-                    geo_pais_code: geo.geo_pais_code,
-                    geo_cp: geo.geo_cp,
-                    geo_lat: geo.geo_lat,
-                    geo_lng: geo.geo_lng
-                })
-            })
-            .then(() => console.log('✅ Datos de prospecto premium (Scroll 75%) enviados a Make con order_code:', ORDER_CODE))
-            .catch(e => console.error('Error enviando a Make:', e));
         }
 
         function calculateScrollPercentage() {
