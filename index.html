@@ -13,14 +13,12 @@
     <meta property="og:url" content="https://diegogaona117.github.io/Paquete-de-ejercicios-en-pdf/">
     <meta property="og:type" content="website">
    
+    <!-- Favicon -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📚</text></svg>">
+   
     <title>Planos Técnicos SolidWorks en PDF | +200 Ejercicios | Diego Gaona</title> 
     
-    <!--
-        META PIXEL — Solo inicializa el pixel, NO hace fbq('track', 'PageView').
-        El PageView se manda por servidor (Cloudflare Worker) para que Meta
-        lo muestre como "Servidor" en el Administrador de eventos.
-    -->
+    <!-- Meta Pixel Code -->
     <script>
         !function(f,b,e,v,n,t,s)
         {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -31,7 +29,7 @@
         s.parentNode.insertBefore(t,s)}(window, document,'script',
         'https://connect.facebook.net/en_US/fbevents.js');
         fbq('init', '373277814132384');
-        // ⚠️ NO se llama fbq('track','PageView') aquí — lo manda el Worker
+        fbq('track', 'PageView');
     </script>
     <noscript>
         <img height="1" width="1" style="display:none"
@@ -39,7 +37,7 @@
         alt="Meta Pixel"/>
     </noscript>
 
-    <!-- Google Analytics -->
+     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-RN68VLQLTW"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -79,18 +77,19 @@
         .stars{color:#ffd700;font-size:1.2em}
         .author{color:#666;margin-bottom:20px;font-size:1.1em}
         .price-section{margin-bottom:25px}
+        .old-price{text-decoration:line-through;color:#e74c3c;font-size:1.1em;margin-right:10px}
         .new-price{font-size:2em;font-weight:700;color:#2c3e50}
         .buy-button{background:linear-gradient(45deg,#FF1717,#FF1717);color:#fff;border:none;padding:15px 40px;font-size:1.2em;font-weight:700;border-radius:8px;cursor:pointer;width:100%;margin-bottom:15px;transition:transform .3s ease,box-shadow .3s ease}
-        .buy-button2{background:linear-gradient(45deg,#6a6a6a,#5b5b5b);color:#fff;border:none;padding:15px 40px;font-size:1.2em;font-weight:700;border-radius:8px;cursor:pointer;width:100%;margin-bottom:15px;opacity:0.8;transition:transform .3s ease,box-shadow .3s ease}
+        .buy-button2 { background: linear-gradient(45deg, #6a6a6a, #5b5b5b); color: #fff; border: none; padding: 15px 40px; font-size: 1.2em; font-weight: 1200; border-radius: 8px; cursor: pointer; width: 100%; margin-bottom: 15px; opacity: 0.8; transition: transform .3s ease, box-shadow .3s ease; }
         .buy-button:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(231,76,60,.3)}
         .buy-button2:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(231,76,60,.3)}
         .video-container{position:relative;border-radius:10px;overflow:hidden;box-shadow:0 8px 25px rgba(0,0,0,.15);background:#f8f9fa;aspect-ratio:16/9}
         .video-container iframe{width:100%;height:100%;border-radius:10px}
-        .plans-showcase{position:relative;border-radius:15px;overflow:hidden;box-shadow:0 20px 50px rgba(0,0,0,.15);background:#f8f9fa;margin-top:30px}
-        .subtitle{font-size:1.3em;color:#000;font-weight:400;line-height:1.4;text-align:center;margin:30px}
+        .plans-showcase{position:relative;border-radius:15px;overflow:hidden;box-shadow:0 20px 50px rgba(0,0,0,.15);background:#f8f9fa; margin-top: 30px;}
+        .subtitle{font-size:1.3em;color:#000;font-weight:400;line-height:1.4;text-align:center;margin:30px;}
         .plans-image{width:100%;height:auto;display:block;transition:transform .3s ease}
         .image-overlay{position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(45deg,rgba(108,92,231,.05) 0%,rgba(162,155,254,.05) 50%,rgba(116,185,255,.05) 100%);pointer-events:none}
-        .reviews-section{margin-top:40px;margin-bottom:40px}
+        .reviews-section{margin-top:40px; margin-bottom:40px}
         .reviews-container{max-width:800px;margin:0 auto;background:#fff;border-radius:20px;box-shadow:0 20px 40px rgba(0,0,0,.1);overflow:hidden}
         .reviews-header{background:linear-gradient(45deg,#ff6b6b,#ee5a24);padding:40px 30px;text-align:center;color:#fff}
         .reviews-header h2{font-size:2.5rem;margin:0;font-weight:700}
@@ -113,15 +112,18 @@
         .comment-text{color:#495057;line-height:1.6;font-size:1rem}
         .loading{text-align:center;padding:40px;color:#6c757d}
         .no-comments{text-align:center;padding:40px;color:#6c757d;font-style:italic}
+        
+        @keyframes fadeInUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
         .fade-in{animation:fadeIn .5s ease-in}
         @keyframes fadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-        @media(max-width:768px){
+        
+        @media (max-width:768px){
             .hero-section{grid-template-columns:1fr;padding:20px;gap:20px}
             .hero-content{order:2;text-align:center}
             .video-container{order:1}
             .hero-content h1{font-size:1.8em}
             .new-price{font-size:1.7em}
-            .feature-card.package-info{padding:30px 20px}
+            .feature-card.package-info { padding: 30px 20px;}
             .reviews-container{margin:0 10px;border-radius:15px}
             .reviews-header{padding:30px 20px}
             .reviews-header h2{font-size:2rem}
@@ -130,44 +132,52 @@
             .comment-header{flex-direction:column;align-items:flex-start}
             .user-info{width:100%}
         }
-        @media(max-width:480px){
+        @media (max-width:480px){
             .hero-content h1{font-size:1.5em}
             .new-price{font-size:1.5em}
-            .buy-button,.buy-button2{padding:12px 30px;font-size:1.1em}
-            .package-title{font-size:1.4rem}
+            .buy-button, .buy-button2{padding:12px 30px;font-size:1.1em}
+            .package-title { font-size: 1.4rem; }
         }
     </style>
 </head>
 
 <body>
+    <!-- Main Container -->
     <div class="main-container">
         
-        <!-- Hero Section -->
+         <!-- Hero Section -->
         <section class="hero-section">
             <div class="hero-content">
                 <h1>Paquete de dibujos en PDF + Piezas + Ensambles</h1>
+                
                 <div class="rating">
                     <span class="rating-number">4.8</span>
                     <div class="stars" aria-label="Calificación 4.8 de 5 estrellas">★★★★☆</div>
                 </div>
+                
                 <div class="author">Creado por Diego Gaona</div>
+                
                 <div class="price-section">
                     <span class="new-price">$50 MXN</span>
                 </div>
+                
                 <a href="https://diegogaona117.github.io/ficha-de-pago/" target="_blank" rel="noopener noreferrer">
                     <button class="buy-button">Comprar Ahora</button>
                 </a>
+
                 <a href="https://drive.google.com/drive/u/0/folders/1t5fdPaDL6LFAAkTxLIsWT3w_KekKMu5_" target="_blank" rel="noopener noreferrer" id="btnMuestraGratis">
                     <button class="buy-button2">Ver Planos de muestra ¡Gratis!</button>
                 </a>
             </div>
+            
             <div class="video-container">
                 <iframe 
                     src="https://www.youtube-nocookie.com/embed/iVwOJH0nfL4?rel=0&modestbranding=1" 
                     title="Detalles paquete de ejercicios SolidWorks" 
                     frameborder="0" 
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen loading="lazy">
+                    allowfullscreen
+                    loading="lazy">
                 </iframe>
             </div>
         </section>
@@ -179,28 +189,45 @@
             </ul>
         </section>
         
-        <section class="feature-card package-info" style="margin-top: 30px;">
+       <section class="feature-card package-info" style="margin-top: 30px;">
           <div class="package-title">
             ¿De qué sirve ver horas de tutoriales de SolidWorks si frente a un plano real<br>
             <span>no sabes ni por dónde empezar?</span>
           </div>
+          
           <p class="package-description">
             Mira, los tutoriales sirven. Pero hay algo que ninguno te va a dar: la capacidad de enfrentarte a un plano en blanco, sin ayuda, y saber qué hacer. Eso no se aprende viendo. Eso se entrena. Y se entrena resolviendo planos reales, solo, hasta que tu cerebro deja de buscar al instructor y empieza a pensar por sí mismo.
           </p>
+          
           <p class="package-description">
             Porque todo ese tiempo viendo tutoriales no te está enseñando SolidWorks.
             <strong>Te está enseñando a copiar a alguien que sí sabe SolidWorks.</strong>
             Y hay una diferencia enorme entre los dos. Este paquete existe para cerrar esa brecha.
           </p>
+          
           <hr class="divider">
+          
           <ul class="package-list">
-            <li><span><strong>Más de 200 planos reales</strong> <span class="dash">—</span> <span class="detail">porque el dominio no llega con 5, ni con 20</span></span></li>
-            <li><span><strong>Desde básicos hasta avanzados</strong> <span class="dash">—</span> <span class="detail">para que siempre tengas un reto acorde al nivel que vas ganando</span></span></li>
-            <li><span><strong>Completamente definidos</strong> <span class="dash">—</span> <span class="detail">tienes todo lo que necesitas, solo tienes que resolverlo</span></span></li>
-            <li><span><strong>Con la masa de cada pieza</strong> <span class="dash">—</span> <span class="detail">para que sepas si de verdad lo hiciste bien</span></span></li>
-            <li><span><strong>PDF que abre en cualquier dispositivo</strong> <span class="dash">—</span> <span class="detail">sin excusas para no practicar hoy</span></span></li>
-            <li><span class="highlight-item">+ 125 piezas incluidas</span></li>
+            <li>
+              <span><strong>Más de 200 planos reales</strong> <span class="dash">—</span> <span class="detail">porque el dominio no llega con 5, ni con 20</span></span>
+            </li>
+            <li>
+              <span><strong>Desde básicos hasta avanzados</strong> <span class="dash">—</span> <span class="detail">para que siempre tengas un reto acorde al nivel que vas ganando</span></span>
+            </li>
+            <li>
+              <span><strong>Completamente definidos</strong> <span class="dash">—</span> <span class="detail">tienes todo lo que necesitas, solo tienes que resolverlo</span></span>
+            </li>
+            <li>
+              <span><strong>Con la masa de cada pieza</strong> <span class="dash">—</span> <span class="detail">para que sepas si de verdad lo hiciste bien</span></span>
+            </li>
+            <li>
+              <span><strong>PDF que abre en cualquier dispositivo</strong> <span class="dash">—</span> <span class="detail">sin excusas para no practicar hoy</span></span>
+            </li>
+            <li>
+              <span class="highlight-item">+ 125 piezas incluidas</span>
+            </li>
           </ul>
+          
           <div class="package-closing">
             Porque el día que te pongan un plano enfrente en una empresa, ya lo habrás resuelto 200 veces.
           </div>
@@ -213,7 +240,11 @@
                 <source media="(min-width: 501px) and (max-width: 1023px)" srcset="https://static.wixstatic.com/media/32c95b_fd3409c7c60b4c67aaa717e3923210f0~mv2.webp">
                 <img src="https://static.wixstatic.com/media/32c95b_e2a09fdfc6d24c88a8e46118e156c8f1~mv2.webp" 
                      alt="Ejemplos de planos técnicos de SolidWorks" 
-                     class="plans-image" referrerpolicy="no-referrer" loading="lazy" width="1200" height="800">
+                     class="plans-image"
+                     referrerpolicy="no-referrer"
+                     loading="lazy"
+                     width="1200"
+                     height="800">
             </picture>
             <div class="image-overlay"></div>
         </div>
@@ -224,13 +255,15 @@
                 <header class="reviews-header">
                     <h2>Comentarios</h2>
                 </header>
+
                 <div class="rating-summary">
                     <div class="overall-rating">
-                        <span class="rating-number" id="overallRating">...</span>
+                        <span class="rating-number" id="overallRating">0.0</span>
                         <span class="stars-large" id="overallStars">☆☆☆☆☆</span>
                     </div>
-                    <div class="total-reviews" id="totalReviews">Cargando...</div>
+                    <div class="total-reviews" id="totalReviews">0 reseñas</div>
                 </div>
+
                 <div class="comments-section">
                     <div class="loading" id="loading">Cargando comentarios...</div>
                     <div id="commentsContainer"></div>
@@ -240,7 +273,7 @@
 
     </div>
 
-     <!-- Scripts de Comentarios -->
+    <!-- Scripts de Comentarios -->
     <script>
         const commentsData=[{id:1,name:"Martin ignacio",rating:4.5,date:"27/03/2026",comment:"logrado!! obtuve mi paquete, se ven muy bien los planos, ahora a practicar ya no estoy en ceros, voy por las piezas mas complejitas"},{id:1,name:"José Julian",rating:4.0,date:"25/03/2026",comment:"Apenas lo estoy revisando, se ve bien, ya mas delante comento que onda"},{id:1,name:"Carlos Cerda",rating:4.5,date:"20/03/2026",comment:"Es cierto lo que dice diego, yo llevé la materia en la universidad, y todo fue solo videos para copiar, pero al momento de usar un plano, no solo yo, todos mis compañeros tenian ese problema, ¿como empezar?"},{id:1,name:"José Arriaga",rating:4.2,date:"12/01/2026",comment:"Sin comentario adicional"},{id:1,name:"Brenda Berenice",rating:5,date:"12/01/2026",comment:"Me ha gustado la biblioteca de cursos, muy buen contenido y material"},{id:1,name:"Simeoón Escamilla",rating:5,date:"11/01/2026",comment:"Yo te conocí de youtube, buen paquete saludos!!"},{id:1,name:"Josefina",rating:5,date:"10/01/2026",comment:"si trae buenos ensambles, ando buscando uno de tren de engranajes, lo tendrán?"},{id:1,name:"Guadalupe Damián",rating:5,date:"09/01/2026",comment:"Si estan chidos los planos, pensé queran menos, pero en las carpetas deensambles traen mas"},{id:1,name:"Luis Mario",rating:5,date:"16/09/2025",comment:"Muy buen pack, super accesible para todo lo que incluye"},{id:2,name:"Evelin Jazmin",rating:5,date:"15/5/2025",comment:"Yo uso Autodesk Inventor y aun que las piezas no las pude abrir, los planos en pdf me han parecido exelentes para practicar, ya tengo conocimientos sobre el programa, pero en mis ratitos libres me gusta practicar y que mejor que con estos planos que están muy completos, me ha parecido una muy buena inversión"},{id:3,name:"Luis Felipe Lazaro Lopez",rating:5,date:"14/5/2025",comment:"Me parece interesante"},{id:4,name:"sergio",rating:5,date:"12/5/2025",comment:"ok"},{id:5,name:"sergio",rating:5,date:"8/5/2025",comment:""},{id:6,name:"Ernesto Silva Mendoza",rating:5,date:"27/4/2025",comment:"Muy buenos por lo que veo, solo falta inciar y practicar son solidworks."},{id:7,name:"Marcos",rating:5,date:"10/4/2025",comment:"Esta bien para practicar y aprender"},{id:8,name:"Braulio Sánchez Espinosa",rating:4.5,date:"7/4/2025",comment:"Me parece muy bien paquete, muy buena calidad y sobretodo muy prácticos.\nMe gustaría poder tener más planos, ya que la publicidad indica x, cantidad de ejercicios."},{id:9,name:"Angel Martinez Zavala",rating:5,date:"4/4/2025",comment:"Aun no inicio el curso pero los planos se ven muy bien"},{id:10,name:"eleazar castillo",rating:4.5,date:"2/4/2025",comment:"me gusta para practicar y mejorar"},{id:11,name:"rcuevas",rating:4,date:"31/3/2025",comment:""},{id:12,name:"Viviana Almeda",rating:5,date:"29/3/2025",comment:"Nuestro profe tambien nos pone tus videos y ejercicios 👍, los compré por que los queria todos completos"},{id:13,name:"Santiago Alexander",rating:5,date:"26/3/2025",comment:"al final el programa no me funcionó, me falto un paso, pero me ayudaron a repararlo, cuando termine el curso gratuito sin duda me inscribiré al de pago, muchas gracias"},{id:14,name:"Juan Ortiz Anguiano",rating:5,date:"26/3/2025",comment:"Muy bueno"},{id:15,name:"Octavio Ibarra Soto",rating:5,date:"24/3/2025",comment:""},{id:16,name:"Erik Daniel",rating:5,date:"23/3/2025",comment:"Tenia semanas intentando conseguir el programa, y aquí pude instalarlo muy facil, el material es muy bueno para ir empezando, tienen muy buena calidad"},{id:17,name:"Pablo",rating:5,date:"22/3/2025",comment:"😲 El profe de la uni dijo que le habian costado 500 pesos, y nos pidió cooperación, de haber sabido los hubiera comprado yo, si muy buen material"},{id:18,name:"carlos lerzo",rating:5,date:"6/3/2025",comment:"muy bueno"},{id:19,name:"Kevin",rating:5,date:"29/2/2025",comment:"Los pueden variar?"},{id:20,name:"Isaac Cereceres Pinedo",rating:4,date:"24/1/2025",comment:""},{id:21,name:"Nicole López",rating:5,date:"23/1/2025",comment:"Excelente curso"},{id:22,name:"jesus",rating:5,date:"13/12/2024",comment:"esta super cool el curso estoy aprendiendo mas de lo que e aprendido en la escuela"},{id:23,name:"Edwin",rating:5,date:"12/12/2024",comment:""},{id:24,name:"Alondra",rating:5,date:"22/11/2024",comment:"Muy buenos, me sirvieron mucho para practicar"},{id:25,name:"Miguel Angel",rating:5,date:"19/11/2024",comment:"alucinante"},{id:26,name:"Marcos ECHEVESTE",rating:4.5,date:"11/11/2024",comment:"muy buen paquete de piezas"},{id:27,name:"Leandro Grill",rating:5,date:"10/11/2024",comment:"Excelente material. Muy interesantes, prácticos y completos."},{id:28,name:"Victor",rating:5,date:"31/10/2024",comment:"Muy buena calidad y muy completos"},{id:29,name:"Victor",rating:5,date:"31/10/2024",comment:"Muy buena calidad y completos"},{id:30,name:"Mirko",rating:5,date:"30/10/2024",comment:"Descargue los ejercicios gratis y me fueron muy utiles, este paquete parece muy prometedor"},{id:31,name:"Jorge abraham",rating:5,date:"29/10/2024",comment:"Excelente  calidad"},{id:32,name:"Jesús",rating:5,date:"26/10/2024",comment:"La verdad esta super genial el paquete de ejercicios quiero aprender mucho más"},{id:33,name:"Federico Campos",rating:5,date:"22/10/2024",comment:"Excelentes"},{id:34,name:"Noriega Azcona Donovan Jessus",rating:5,date:"15/10/2024",comment:"Muy util y tambien muy bien explicado los videos"},{id:35,name:"ANGEL ROLANDO VALLEJO ALMANZA",rating:5,date:"14/10/2024",comment:"LLEVO DOS DIAS CON EL PAQUETE Y ME HA GUSTADO, MUCHAS GRACIAS EN UNOS DIAS ESPERO REGISTRARME EN SU CURSO."},{id:36,name:"Jose Gamez",rating:5,date:"14/10/2024",comment:"Excelente!"},{id:37,name:"Erika",rating:4.5,date:"9/10/2024",comment:"Por el momento bueno"},{id:38,name:"Santiago Vázquez Vera",rating:5,date:"28/9/2024",comment:"es muy bueno, lo recomiendo"},{id:39,name:"Santiago Vazquez Vera",rating:5,date:"27/9/2024",comment:"es muy bueno, lo recomiendo demasiado"},{id:40,name:"Alejandro Hernandez Jimenez",rating:5,date:"21/9/2024",comment:""},{id:41,name:"María Isabel",rating:5,date:"18/9/2024",comment:"Me ha gustado la calidad que tienen, si son de mucha ayuda, ya que se me complica a veces el programa y me gusta que trae la masa de la pieza para comprobarlas"},{id:42,name:"Oswaldo Cantú",rating:5,date:"17/9/2024",comment:"Me parecen excelentes para practicar. De gran calidad y de gran valor academico."},{id:43,name:"José Humberto",rating:5,date:"14/9/2024",comment:"Está muy bien la verdad, espero aprender más con estos planos"},{id:44,name:"carlos",rating:5,date:"14/9/2024",comment:"me fue de mucha ayuda"},{id:45,name:"César Roberto Saenz Alvidrez",rating:5,date:"13/9/2024",comment:"Me gusto"},{id:46,name:"Alejandro",rating:4,date:"24/5/2025",comment:"esta chido"},{id:47,name:"isaac ceereceres",rating:5,date:"8/6/2024",comment:"son muy buenos cursos ya que Diego tiena una manera muy clara de explicar las cosas, por lo que es muy facil aprender viendo"},{id:48,name:"Jaime Coronel",rating:5,date:"10/9/2024",comment:"Excelente  Material"},{id:49,name:"cristhian",rating:5,date:"7/10/2024",comment:""},{id:50,name:"Miguel Gabriel Coria Acosta",rating:5,date:"30/4/2025",comment:"Excelente material"},{id:51,name:"Eduardo",rating:4.5,date:"26/5/2025",comment:"Sugiero haya más videos de cada pieza."}];
         function getInitials(e){return e.split(" ").map(e=>e[0]).join("").toUpperCase().slice(0,2)}
@@ -252,27 +285,17 @@
         function initLazyLoadComments(){const e=document.querySelector(".reviews-section");if(!e)return void console.error("No se encontró la sección de reviews");const t=new IntersectionObserver(a=>{a.forEach(a=>{a.isIntersecting&&!commentsLoaded&&(console.log("Sección de comentarios visible, cargando..."),renderComments(),t.unobserve(e))})},{root:null,rootMargin:"200px",threshold:.1});t.observe(e)}
         document.addEventListener("DOMContentLoaded",function(){console.log("DOM cargado, iniciando lazy load..."),initLazyLoadComments()});
     </script>
-    <!-- Meta CAPI via Cloudflare Worker -->
+
+    <!-- EVENTO META PIXEL Y MAKE WEBHOOK: SCROLL 75% + ORDER CODE -->
     <script>
     (function() {
         'use strict';
+        
+        const MAKE_WEBHOOK = 'https://hook.us1.make.com/fyli8y7tmxu6mtqf7byp9vy2g3cji3wa';
+        const SCROLL_PERCENTAGE = 75; 
+        let eventSent = false;
 
-        const WORKER_URL = 'https://meta-capi.cursodiegogaona.workers.dev';
-        const SCROLL_PERCENTAGE = 75;
-        let scrollEventSent = false;
-
-        // --- Helpers ---
-        function getCookie(name) {
-            const m = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
-            return m ? decodeURIComponent(m[2]) : null;
-        }
-
-        function getFbc() {
-            const fbclid = new URLSearchParams(window.location.search).get('fbclid');
-            if (fbclid) return 'fb.1.' + Date.now() + '.' + fbclid;
-            return getCookie('_fbc') || null;
-        }
-
+        // --- GENERACIÓN Y RECUPERACIÓN DE ORDER CODE ---
         function generateOrderCode() {
             const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
             let code = 'PL-';
@@ -288,99 +311,125 @@
             return newCode;
         }
 
+        const ORDER_CODE = getOrCreateOrderCode();
+
+        // Funciones de ayuda para obtener datos de rastreo
+        function getCookie(name) {
+            const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+            return match ? decodeURIComponent(match[2]) : null;
+        }
+
+        function getFbc() {
+            const fbclid = new URLSearchParams(window.location.search).get('fbclid');
+            if (fbclid) return 'fb.1.' + Date.now() + '.' + fbclid;
+            return getCookie('_fbc') || null;
+        }
+
         async function getGeoData() {
             try {
-                const data = await fetch('https://ipapi.co/json/').then(r=>r.json());
-                return { client_ip: data.ip||null, geo_cp: data.postal||null, geo_pais: data.country||null };
-            } catch(e) {
-                return { client_ip: null, geo_cp: null, geo_pais: null };
+                const res  = await fetch('https://ipapi.co/json/');
+                const data = await res.json();
+                return {
+                    client_ip:     data.ip            || null,
+                    geo_ciudad:    data.city          || null,
+                    geo_region:    data.region        || null,
+                    geo_pais:      data.country_name  || null,
+                    geo_pais_code: data.country       || null,
+                    geo_cp:        data.postal        || null,
+                    geo_lat:       data.latitude      || null,
+                    geo_lng:       data.longitude     || null,
+                };
+            } catch (e) {
+                return { client_ip: null, geo_ciudad: null, geo_region: null, geo_pais: null, geo_pais_code: null, geo_cp: null, geo_lat: null, geo_lng: null };
             }
         }
 
-        async function sendToWorker(payload) {
-            try {
-                const res = await fetch(WORKER_URL, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
-                const json = await res.json();
-                console.log('✅ Worker respondió (' + payload.evento + '):', json);
-            } catch(e) {
-                console.error('❌ Error Worker:', e);
+        async function sendEvent() {
+            // 🛑 VERIFICACIÓN: Si ya se envió antes en esta u otra sesión, detenemos el código aquí
+            if (localStorage.getItem('scroll_75_enviado')) {
+                return; // Ya se envió antes, no hacer nada.
             }
-        }
 
-        // --- EVENTO 1: PageView server-side (1 vez por sesión) ---
-        // No se usa fbq('track','PageView') para evitar deduplicación
-        // y que Meta lo muestre como "Servidor"
-        async function sendPageView() {
-            if (sessionStorage.getItem('pageview_enviado')) return;
-            sessionStorage.setItem('pageview_enviado', 'true');
-
-            const geo = await getGeoData();
-
-            await sendToWorker({
-                evento: 'PageView',
-                order_code: getOrCreateOrderCode(),
-                producto: 'Paquete Planos PDF',
-                valor: 0,
-                moneda: 'MXN',
-                fbp: getCookie('_fbp') || null,
-                fbc: getFbc(),
-                client_ip: geo.client_ip,
-                client_user_agent: navigator.userAgent,
-                geo_cp: geo.geo_cp,
-                geo_pais: geo.geo_pais,
-            });
-        }
-
-        // --- EVENTO 2: ViewContent al 75% scroll (1 vez por usuario) ---
-        // Tampoco se usa fbq para evitar deduplicación
-        async function sendViewContent() {
-            if (localStorage.getItem('scroll_75_enviado')) return;
-            if (scrollEventSent) return;
-            scrollEventSent = true;
+            if (eventSent) return;
+            eventSent = true; 
+            
+            // Ponemos el "candado" en localStorage para futuras visitas/recargas
             localStorage.setItem('scroll_75_enviado', 'true');
 
+            // Recopilamos la data en segundo plano
+            const fbp = getCookie('_fbp') || null;
+            const fbc = getFbc();
             const geo = await getGeoData();
 
-            await sendToWorker({
-                evento: 'ViewContent',
-                order_code: getOrCreateOrderCode(),
-                producto: 'Paquete Planos PDF - Lectura 75%',
-                valor: 50,
-                moneda: 'MXN',
-                fbp: getCookie('_fbp') || null,
-                fbc: getFbc(),
-                client_ip: geo.client_ip,
-                client_user_agent: navigator.userAgent,
-                geo_cp: geo.geo_cp,
-                geo_pais: geo.geo_pais,
-            });
+            // 1. Enviar evento estructurado a Meta Pixel
+            if (typeof fbq !== 'undefined') {
+                fbq('track', 'ViewContent', {
+                    content_name: 'Paquete de Planos PDF - Lectura 75%',
+                    content_category: 'Educacion CAD',
+                    value: 50.00,
+                    currency: 'MXN'
+                });
+                console.log('✅ Evento "ViewContent (75% Scroll)" enviado a Meta Pixel');
+            } else {
+                console.warn('⚠️ Meta Pixel no disponible');
+            }
+
+            // 2. Enviar los mismos datos a tu webhook de Make
+            fetch(MAKE_WEBHOOK, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    evento: 'ViewContent',
+                    order_code: ORDER_CODE,
+                    timestamp: new Date().toISOString(),
+                    producto: 'Paquete Planos PDF - Lectura 75%',
+                    valor: 50,
+                    moneda: 'MXN',
+                    fbp: fbp,
+                    fbc: fbc,
+                    client_ip: geo.client_ip,
+                    client_user_agent: navigator.userAgent,
+                    geo_ciudad: geo.geo_ciudad,
+                    geo_region: geo.geo_region,
+                    geo_pais: geo.geo_pais,
+                    geo_pais_code: geo.geo_pais_code,
+                    geo_cp: geo.geo_cp,
+                    geo_lat: geo.geo_lat,
+                    geo_lng: geo.geo_lng
+                })
+            })
+            .then(() => console.log('✅ Datos de prospecto premium (Scroll 75%) enviados a Make con order_code:', ORDER_CODE))
+            .catch(e => console.error('Error enviando a Make:', e));
         }
 
-        // --- Scroll listener ---
-        function calcScroll() {
-            const dH = document.documentElement.scrollHeight - window.innerHeight;
-            return dH > 0 ? Math.round((window.pageYOffset / dH) * 100) : 0;
+        function calculateScrollPercentage() {
+            const windowHeight = window.innerHeight;
+            const documentHeight = document.documentElement.scrollHeight;
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            const scrollableHeight = documentHeight - windowHeight;
+            const scrolled = (scrollTop / scrollableHeight) * 100;
+            
+            return Math.round(scrolled);
         }
 
         function handleScroll() {
-            if (scrollEventSent || localStorage.getItem('scroll_75_enviado')) return;
-            if (calcScroll() >= SCROLL_PERCENTAGE) {
-                sendViewContent();
+            if (eventSent || localStorage.getItem('scroll_75_enviado')) return;
+            
+            const scrollPercent = calculateScrollPercentage();
+            
+            if (scrollPercent >= SCROLL_PERCENTAGE) {
+                console.log('✨ Usuario premium llegó al ' + SCROLL_PERCENTAGE + '%');
+                sendEvent();
                 window.removeEventListener('scroll', handleScroll);
             }
         }
 
-        // --- Init ---
-        window.addEventListener('load', sendPageView);
         window.addEventListener('scroll', handleScroll);
+        // Validar desde el inicio por si el usuario recarga la página ya estando abajo
         handleScroll();
-
+        
     })();
     </script>
-
 </body>
 </html>
