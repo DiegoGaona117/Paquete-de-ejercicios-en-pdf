@@ -270,24 +270,30 @@
         }
 
         @media(max-width:768px){
-            .hero-section{grid-template-columns:1fr;padding:20px;gap:20px}
+            body { padding: 0; }
+            .main-container { padding: 0; }
+            .hero-section{grid-template-columns:1fr;padding:20px 15px;gap:20px; border-radius: 0; margin-bottom: 20px;}
             .hero-content{order:2;text-align:center}
             .hero-tags{justify-content:center}
-            .video-container{order:1}
+            .video-container{order:1; border-radius: 8px;}
             .hero-content h1{font-size:1.8em}
             .new-price{font-size:1.7em}
-            .feature-card.package-info{padding:30px 20px}
-            .reviews-container{margin:0 10px;border-radius:15px}
-            .reviews-header{padding:30px 20px}
+            .feature-card.package-info{padding:30px 15px; border-radius: 0; border-left: none; border-top: 5px solid #1a6fc4;}
+            .plans-showcase { border-radius: 0; margin-top: 20px; }
+            .reviews-container{margin:0;border-radius:0;}
+            .reviews-header{padding:30px 15px}
             .reviews-header h2{font-size:2rem}
+            .rating-summary { padding: 20px 15px; }
             .rating-summary .rating-number{font-size:2.5rem}
+            .comments-section { padding: 20px 15px; }
             .comment{padding:20px}
             .comment-header{flex-direction:column;align-items:flex-start}
             .user-info{width:100%}
-            .crosssell-block{grid-template-columns:1fr}
-            .crosssell-left{padding:28px 24px}
-            .crosssell-right{padding:28px 24px}
+            .crosssell-block{grid-template-columns:1fr; margin-top: 20px; border-radius: 0; border-left: none; border-top: 5px solid #1a6fc4;}
+            .crosssell-left{padding:28px 15px}
+            .crosssell-right{padding:28px 15px}
             .crosssell-title{font-size:1.2rem}
+            .crosssell-cta { width: 100%; justify-content: center; }
         }
         @media(max-width:480px){
             .hero-content h1{font-size:1.5em}
@@ -336,7 +342,14 @@
         <!-- Package Info -->
         <section class="feature-card package-info">
             <ul class="package-list">
-                <li>Los tutoriales te dan el conocimiento. Los planos te dan el dominio. No basta con saber. <strong>"Tienes que entrenar el cerebro 🧠 para que puedas resolverlo solo"</strong></li>
+                <li>
+                    <span>
+                        Los tutoriales te dan el conocimiento. Los planos te dan el dominio. No basta con saber.
+                        <strong style="display: block; margin-top: 12px; color: #1a6fc4; font-size: 1.25rem; line-height: 1.4;">
+                            "Tienes que entrenar el cerebro 🧠 para que puedas resolverlo solo"
+                        </strong>
+                    </span>
+                </li>
             </ul>
         </section>
 
