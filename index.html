@@ -15,7 +15,6 @@
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📚</text></svg>">
     <title>Planos Técnicos SolidWorks en PDF | +200 Ejercicios | Diego Gaona</title>
 
-    <!-- Meta Pixel — SIN fbq('track','PageView') automático -->
     <script>
         !function(f,b,e,v,n,t,s)
         {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -26,15 +25,12 @@
         s.parentNode.insertBefore(t,s)}(window, document,'script',
         'https://connect.facebook.net/en_US/fbevents.js');
         fbq('init', '373277814132384');
-        // ⚠️ No se llama fbq('track','PageView') aquí.
-        // Se manda manualmente con event_id para deduplicación con el Worker.
     </script>
     <noscript>
         <img height="1" width="1" style="display:none"
         src="https://www.facebook.com/tr?id=373277814132384&ev=PageView&noscript=1" alt="Meta Pixel"/>
     </noscript>
 
-    <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-RN68VLQLTW"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -78,6 +74,8 @@
         .buy-button2{background:linear-gradient(45deg,#6a6a6a,#5b5b5b);color:#fff;border:none;padding:15px 40px;font-size:1.2em;font-weight:700;border-radius:8px;cursor:pointer;width:100%;margin-bottom:15px;opacity:.8;transition:transform .3s ease,box-shadow .3s ease}
         .buy-button:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(231,76,60,.3)}
         .buy-button2:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(231,76,60,.3)}
+        .hero-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:15px}
+        .hero-tag{font-size:.85rem;font-weight:600;color:#0d1b2e;background:#f0f4fb;border:1px solid #d0d8e8;padding:5px 12px;border-radius:4px;display:inline-flex;align-items:center;gap:4px}
         .video-container{position:relative;border-radius:10px;overflow:hidden;box-shadow:0 8px 25px rgba(0,0,0,.15);background:#f8f9fa;aspect-ratio:16/9}
         .video-container iframe{width:100%;height:100%;border-radius:10px}
         .plans-showcase{position:relative;border-radius:15px;overflow:hidden;box-shadow:0 20px 50px rgba(0,0,0,.15);background:#f8f9fa;margin-top:30px}
@@ -109,9 +107,172 @@
         .no-comments{text-align:center;padding:40px;color:#6c757d;font-style:italic}
         .fade-in{animation:fadeIn .5s ease-in}
         @keyframes fadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+        /* =============================================
+           CROSS-SELL BLOCK
+           ============================================= */
+        .crosssell-block{
+            max-width:1200px;
+            margin:30px auto 0;
+            background:#fff;
+            border-radius:4px;
+            border-left:5px solid #1a6fc4;
+            box-shadow:0 4px 32px rgba(0,0,0,.08);
+            overflow:hidden;
+            display:grid;
+            grid-template-columns:1fr 1fr;
+        }
+        .crosssell-left{
+            padding:40px 44px;
+            display:flex;
+            flex-direction:column;
+            justify-content:center;
+            gap:18px;
+        }
+        .crosssell-eyebrow{
+            display:inline-flex;
+            align-items:center;
+            gap:8px;
+            font-size:.8rem;
+            font-weight:700;
+            letter-spacing:1.5px;
+            text-transform:uppercase;
+            color:#1a6fc4;
+            background:rgba(26,111,196,.08);
+            padding:6px 14px;
+            border-radius:2px;
+            width:fit-content;
+        }
+        .crosssell-title{
+            font-size:1.45rem;
+            font-weight:800;
+            color:#0d1b2e;
+            line-height:1.25;
+            letter-spacing:-.2px;
+        }
+        .crosssell-title span{color:#1a6fc4}
+        .crosssell-desc{
+            font-size:1rem;
+            color:#555;
+            line-height:1.6;
+        }
+        .crosssell-pills{
+            display:flex;
+            flex-wrap:wrap;
+            gap:8px;
+            margin-top:4px;
+        }
+        .pill{
+            font-size:.85rem;
+            font-weight:600;
+            color:#0d1b2e;
+            background:#f0f4fb;
+            border:1px solid #d0d8e8;
+            padding:5px 12px;
+            border-radius:2px;
+        }
+        .pill.accent{
+            background:rgba(26,111,196,.1);
+            border-color:rgba(26,111,196,.3);
+            color:#1a6fc4;
+        }
+        .crosssell-cta{
+            display:inline-flex;
+            align-items:center;
+            gap:10px;
+            background:#1a6fc4;
+            color:#fff;
+            font-size:1rem;
+            font-weight:700;
+            padding:14px 28px;
+            border-radius:4px;
+            text-decoration:none;
+            width:fit-content;
+            margin-top:6px;
+            transition:background .2s,transform .2s;
+            letter-spacing:.2px;
+        }
+        .crosssell-cta:hover{
+            background:#155fa0;
+            transform:translateY(-2px);
+        }
+        .crosssell-right{
+            background:#0d1b2e;
+            padding:40px;
+            display:flex;
+            flex-direction:column;
+            justify-content:center;
+            gap:20px;
+            position:relative;
+            overflow:hidden;
+        }
+        .crosssell-right::before{
+            content:"77";
+            position:absolute;
+            right:-10px;
+            bottom:-30px;
+            font-size:160px;
+            font-weight:800;
+            color:rgba(26,111,196,.08);
+            line-height:1;
+            pointer-events:none;
+            user-select:none;
+        }
+        .crosssell-label{
+            font-size:.75rem;
+            font-weight:700;
+            letter-spacing:2px;
+            text-transform:uppercase;
+            color:#1a6fc4;
+        }
+        .crosssell-feature-list{
+            list-style:none;
+            display:flex;
+            flex-direction:column;
+            gap:12px;
+        }
+        .crosssell-feature-list li{
+            display:flex;
+            align-items:flex-start;
+            gap:12px;
+            font-size:.95rem;
+            color:rgba(255,255,255,.85);
+            line-height:1.45;
+        }
+        .crosssell-feature-list li .icon{
+            width:20px;
+            height:20px;
+            background:#1a6fc4;
+            border-radius:2px;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            flex-shrink:0;
+            margin-top:1px;
+        }
+        .crosssell-price-row{
+            display:flex;
+            align-items:center;
+            gap:12px;
+            padding-top:8px;
+            border-top:1px dashed rgba(255,255,255,.12);
+            margin-top:4px;
+        }
+        .crosssell-price{
+            font-size:1.5rem;
+            font-weight:800;
+            color:#fff;
+        }
+        .crosssell-guarantee{
+            font-size:.8rem;
+            color:rgba(255,255,255,.75); /* Opacidad mejorada al 75% */
+            line-height:1.4;
+        }
+
         @media(max-width:768px){
             .hero-section{grid-template-columns:1fr;padding:20px;gap:20px}
             .hero-content{order:2;text-align:center}
+            .hero-tags{justify-content:center}
             .video-container{order:1}
             .hero-content h1{font-size:1.8em}
             .new-price{font-size:1.7em}
@@ -123,6 +284,10 @@
             .comment{padding:20px}
             .comment-header{flex-direction:column;align-items:flex-start}
             .user-info{width:100%}
+            .crosssell-block{grid-template-columns:1fr}
+            .crosssell-left{padding:28px 24px}
+            .crosssell-right{padding:28px 24px}
+            .crosssell-title{font-size:1.2rem}
         }
         @media(max-width:480px){
             .hero-content h1{font-size:1.5em}
@@ -146,14 +311,16 @@
                 </div>
                 <div class="author">Creado por Diego Gaona</div>
                 <div class="price-section">
-                    <span class="new-price">$60 MXN</span>
+                    <span class="new-price">$69 MXN</span>
                 </div>
                 <a href="https://diegogaona117.github.io/ficha-de-pago/" target="_blank" rel="noopener noreferrer">
                     <button class="buy-button">Comprar Ahora</button>
                 </a>
-                <a href="https://drive.google.com/drive/u/0/folders/1t5fdPaDL6LFAAkTxLIsWT3w_KekKMu5_" target="_blank" rel="noopener noreferrer" id="btnMuestraGratis">
-                    <button class="buy-button2">Ver Planos de muestra ¡Gratis!</button>
-                </a>
+                <div class="hero-tags">
+                    <span class="hero-tag">🔒 Pago Seguro</span>
+                    <span class="hero-tag">⚡ Acceso Inmediato</span>
+                    <span class="hero-tag">♾️ Acceso de por vida</span>
+                </div>
             </div>
             <div class="video-container">
                 <iframe
@@ -200,6 +367,7 @@
             </div>
         </section>
 
+        <!-- Plans Showcase -->
         <div class="plans-showcase">
             <p class="subtitle"><strong>Planos en PDF que incluye este paquete</strong></p>
             <picture>
@@ -211,6 +379,92 @@
             </picture>
             <div class="image-overlay"></div>
         </div>
+
+        <!-- =============================================
+             CROSS-SELL: Paquete con videos
+             ============================================= -->
+        <div class="crosssell-block">
+
+            <!-- Lado izquierdo: Copy -->
+            <div class="crosssell-left">
+                <span class="crosssell-eyebrow">
+                    También te puede interesar
+                </span>
+
+                <h2 class="crosssell-title">
+                    ¿Prefieres practicar con<br>
+                    <span>video guiado paso a paso?</span>
+                </h2>
+
+                <p class="crosssell-desc">
+                    Si quieres planos con tutoriales en video para cada pieza,
+                    tenemos el paquete perfecto. Sin quedarte trabado,
+                    sin buscar en YouTube.
+                </p>
+
+                <div class="crosssell-pills">
+                    <span class="pill accent">🎥 77 videos tutoriales</span>
+                    <span class="pill">📄 77 planos PDF</span>
+                    <span class="pill">🇲🇽 En español</span>
+                    <span class="pill">🔄 Acceso de por vida</span>
+                </div>
+
+                <!-- Botón con evento InitiateCheckout -->
+                <a href="https://diegogaona117.github.io/Paquete-de-ejercicios-en-pdf-ars/"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="crosssell-cta"
+                   onclick="if(typeof fbq === 'function') fbq('track', 'InitiateCheckout');">
+                    Ver paquete con videos
+                    <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+            </div>
+
+            <!-- Lado derecho: Features -->
+            <div class="crosssell-right">
+                <span class="crosssell-label">Paquete con videos</span>
+
+                <ul class="crosssell-feature-list">
+                    <li>
+                        <span class="icon">
+                            <svg aria-hidden="true" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                        </span>
+                        <span>Cada plano tiene su <strong style="color:#fff">video tutorial en español</strong></span>
+                    </li>
+                    <li>
+                        <span class="icon">
+                            <svg aria-hidden="true" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                        </span>
+                        <span>Progresión estructurada: de básico a avanzado</span>
+                    </li>
+                    <li>
+                        <span class="icon">
+                            <svg aria-hidden="true" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                        </span>
+                        <span>Funciona con <strong style="color:#fff">cualquier versión</strong> de SolidWorks</span>
+                    </li>
+                    <li>
+                        <span class="icon">
+                            <svg aria-hidden="true" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                        </span>
+                        <span>Nuevos planos y videos se agregan gratis</span>
+                    </li>
+                    <li>
+                        <span class="icon">
+                            <svg aria-hidden="true" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                        </span>
+                        <span>Garantía total de <strong style="color:#fff">7 días</strong> — sin preguntas</span>
+                    </li>
+                </ul>
+
+                <div class="crosssell-price-row">
+                    <span class="crosssell-price">Pago único</span>
+                    <span class="crosssell-guarantee">Acceso inmediato<br>vía Hotmart</span>
+                </div>
+            </div>
+
+        </div>
+        <!-- FIN CROSS-SELL -->
 
         <!-- Reviews Section -->
         <section class="reviews-section">
@@ -232,203 +486,181 @@
 
     </div>
 
-    <!-- Comentarios desde Google Sheets -->
+    <!-- Comentarios fijos -->
     <script>
-        const CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQwCISC21HdJ_izVW-6hK-R3BwW66XWTnutzevQ7sIEar9bDBxWg2d9MrJGkhGXaO6mn1dONFmNlj8p/pub?output=csv';
-        function parseCSV(text){
-            const lines=text.trim().split('\n');
-            return lines.slice(1).map(line=>{
-                const cols=[];let cur='',inQ=false;
-                for(let i=0;i<line.length;i++){const ch=line[i];if(ch==='"'){inQ=!inQ;continue}if(ch===','&&!inQ){cols.push(cur.trim());cur='';continue}cur+=ch}
-                cols.push(cur.trim());
-                return{date:(cols[0]||'').split(' ')[0],rating:extractRating(cols[1]||'0'),name:cols[2]||'Anónimo',comment:cols[3]||''};
-            }).filter(r=>r.name&&r.rating>0);
+        const commentsData = [
+            {id:1,name:"Martin ignacio",rating:4.5,comment:"logrado!! obtuve mi paquete, se ven muy bien los planos, ahora a practicar ya no estoy en ceros, voy por las piezas mas complejitas"},
+            {id:2,name:"José Julian",rating:4.0,comment:"Apenas lo estoy revisando, se ve bien, ya mas delante comento que onda"},
+            {id:3,name:"Carlos Cerda",rating:4.5,comment:"Es cierto lo que dice diego, yo llevé la materia en la universidad, y todo fue solo videos para copiar, pero al momento de usar un plano, no solo yo, todos mis compañeros tenian ese problema, ¿como empezar?"},
+            {id:4,name:"José Arriaga",rating:4.2,comment:"Sin comentario adicional"},
+            {id:5,name:"Brenda Berenice",rating:5,comment:"Me ha gustado la biblioteca de cursos, muy buen contenido y material"},
+            {id:6,name:"Simeoón Escamilla",rating:5,comment:"Yo te conocí de youtube, buen paquete saludos!!"},
+            {id:7,name:"Josefina",rating:5,comment:"si trae buenos ensambles, ando buscando uno de tren de engranajes, lo tendrán?"},
+            {id:8,name:"Guadalupe Damián",rating:5,comment:"Si estan chidos los planos, pensé queran menos, pero en las carpetas deensambles traen mas"},
+            {id:9,name:"Luis Mario",rating:5,comment:"Muy buen pack, super accesible para todo lo que incluye"},
+            {id:10,name:"Evelin Jazmin",rating:5,comment:"Yo uso Autodesk Inventor y aun que las piezas no las pude abrir, los planos en pdf me han parecido exelentes para practicar, ya tengo conocimientos sobre el programa, pero en mis ratitos libres me gusta practicar y que mejor que con estos planos que están muy completos, me ha parecido una muy buena inversión"},
+            {id:11,name:"Luis Felipe Lazaro Lopez",rating:5,comment:"Me parece interesante"},
+            {id:12,name:"sergio",rating:5,comment:"ok"},
+            {id:13,name:"sergio",rating:5,comment:""},
+            {id:14,name:"Ernesto Silva Mendoza",rating:5,comment:"Muy buenos por lo que veo, solo falta inciar y practicar son solidworks."},
+            {id:15,name:"Marcos",rating:5,comment:"Esta bien para practicar y aprender"},
+            {id:16,name:"Braulio Sánchez Espinosa",rating:4.5,comment:"Me parece muy bien paquete, muy buena calidad y sobretodo muy prácticos.\nMe gustaría poder tener más planos, ya que la publicidad indica x, cantidad de ejercicios."},
+            {id:17,name:"Angel Martinez Zavala",rating:5,comment:"Aun no inicio el curso pero los planos se ven muy bien"},
+            {id:18,name:"eleazar castillo",rating:4.5,comment:"me gusta para practicar y mejorar"},
+            {id:19,name:"rcuevas",rating:4,comment:""},
+            {id:20,name:"Viviana Almeda",rating:5,comment:"Nuestro profe tambien nos pone tus videos y ejercicios 👍, los compré por que los queria todos completos"},
+            {id:21,name:"Santiago Alexander",rating:5,comment:"al final el programa no me funcionó, me falto un paso, pero me ayudaron a repararlo, cuando termine el curso gratuito sin duda me inscribiré al de pago, muchas gracias"},
+            {id:22,name:"Juan Ortiz Anguiano",rating:5,comment:"Muy bueno"},
+            {id:23,name:"Octavio Ibarra Soto",rating:5,comment:""},
+            {id:24,name:"Erik Daniel",rating:5,comment:"Tenia semanas intentando conseguir el programa, y aquí pude instalarlo muy facil, el material es muy bueno para ir empezando, tienen muy buena calidad"},
+            {id:25,name:"Pablo",rating:5,comment:"😲 El profe de la uni dijo que le habian costado 500 pesos, y nos pidió cooperación, de haber sabido los hubiera comprado yo, si muy buen material"},
+            {id:26,name:"carlos lerzo",rating:5,comment:"muy bueno"},
+            {id:27,name:"Kevin",rating:5,comment:"Los pueden variar?"},
+            {id:28,name:"Isaac Cereceres Pinedo",rating:4,comment:""},
+            {id:29,name:"Nicole López",rating:5,comment:"Excelente curso"},
+            {id:30,name:"jesus",rating:5,comment:"esta super cool el curso estoy aprendiendo mas de lo que e aprendido en la escuela"},
+            {id:31,name:"Edwin",rating:5,comment:""},
+            {id:32,name:"Alondra",rating:5,comment:"Muy buenos, me sirvieron mucho para practicar"},
+            {id:33,name:"Miguel Angel",rating:5,comment:"alucinante"},
+            {id:34,name:"Marcos ECHEVESTE",rating:4.5,comment:"muy buen paquete de piezas"},
+            {id:35,name:"Leandro Grill",rating:5,comment:"Excelente material. Muy interesantes, prácticos y completos."},
+            {id:36,name:"Victor",rating:5,comment:"Muy buena calidad y muy completos"},
+            {id:37,name:"Victor",rating:5,comment:"Muy buena calidad y completos"},
+            {id:38,name:"Mirko",rating:5,comment:"Descargue los ejercicios gratis y me fueron muy utiles, este paquete parece muy prometedor"},
+            {id:39,name:"Jorge abraham",rating:5,comment:"Excelente  calidad"},
+            {id:40,name:"Jesús",rating:5,comment:"La verdad esta super genial el paquete de ejercicios quiero aprender mucho más"},
+            {id:41,name:"Federico Campos",rating:5,comment:"Excelentes"},
+            {id:42,name:"Noriega Azcona Donovan Jessus",rating:5,comment:"Muy util y tambien muy bien explicado los videos"},
+            {id:43,name:"ANGEL ROLANDO VALLEJO ALMANZA",rating:5,comment:"LLEVO DOS DIAS CON EL PAQUETE Y ME HA GUSTADO, MUCHAS GRACIAS EN UNOS DIAS ESPERO REGISTRARME EN SU CURSO."},
+            {id:44,name:"Jose Gamez",rating:5,comment:"Excelente!"},
+            {id:45,name:"Erika",rating:4.5,comment:"Por el momento bueno"},
+            {id:46,name:"Santiago Vázquez Vera",rating:5,comment:"es muy bueno, lo recomiendo"},
+            {id:47,name:"Santiago Vazquez Vera",rating:5,comment:"es muy bueno, lo recomiendo demasiado"},
+            {id:48,name:"Alejandro Hernandez Jimenez",rating:5,comment:""},
+            {id:49,name:"María Isabel",rating:5,comment:"Me ha gustado la calidad que tienen, si son de mucha ayuda, ya que se me complica a veces el programa y me gusta que trae la masa de la pieza para comprobarlas"},
+            {id:50,name:"Oswaldo Cantú",rating:5,comment:"Me parecen excelentes para practicar. De gran calidad y de gran valor academico."},
+            {id:51,name:"José Humberto",rating:5,comment:"Está muy bien la verdad, espero aprender más con estos planos"},
+            {id:52,name:"carlos",rating:5,comment:"me fue de mucha ayuda"},
+            {id:53,name:"César Roberto Saenz Alvidrez",rating:5,comment:"Me gusto"},
+            {id:54,name:"Alejandro",rating:4,comment:"esta chido"},
+            {id:55,name:"isaac ceereceres",rating:5,comment:"son muy buenos cursos ya que Diego tiena una manera muy clara de explicar las cosas, por lo que es muy facil aprender viendo"},
+            {id:56,name:"Jaime Coronel",rating:5,comment:"Excelente  Material"},
+            {id:57,name:"cristhian",rating:5,comment:""},
+            {id:58,name:"Miguel Gabriel Coria Acosta",rating:5,comment:"Excelente material"},
+            {id:59,name:"Eduardo",rating:4.5,comment:"Sugiero haya más videos de cada pieza."}
+        ];
+
+        function getInitials(name) {
+            return name.split(" ").map(n => n[0]).join("").toUpperCase().slice(0, 2);
         }
-        function extractRating(raw){const m=raw.match(/^(\d+\.?\d*)/);return m?parseFloat(m[1]):0}
-        function getInitials(n){return n.split(' ').map(p=>p[0]).join('').toUpperCase().slice(0,2)}
-        function createStars(r){let s='';for(let i=1;i<=5;i++)s+=i<=r?'★':'☆';return s}
-        function calcAvg(data){if(!data.length)return'0.0';return(data.reduce((a,r)=>a+r.rating,0)/data.length).toFixed(1)}
-        function renderComments(data){
-            document.getElementById('loading').style.display='none';
-            const avg=calcAvg(data);
-            document.getElementById('overallRating').textContent=avg;
-            document.getElementById('overallStars').textContent=createStars(Math.round(parseFloat(avg)));
-            document.getElementById('totalReviews').textContent=`${data.length} reseña${data.length!==1?'s':''}`;
-            document.getElementById('commentsContainer').innerHTML=data.length
-                ?data.map(r=>`<div class="comment fade-in"><div class="comment-header"><div class="user-info"><div class="user-avatar">${getInitials(r.name)}</div><div class="user-details"><h3>${r.name}</h3><div class="comment-date">${r.date}</div></div></div><div class="comment-rating"><span class="stars">${createStars(r.rating)}</span><span class="rating-value">${r.rating}</span></div></div><div class="comment-text">${r.comment||'Sin comentario adicional'}</div></div>`).join('')
-                :'<div class="no-comments">No hay comentarios disponibles</div>';
+
+        function createStars(rating) {
+            let stars = "";
+            for (let i = 1; i <= 5; i++) {
+                stars += i <= rating ? "★" : "☆";
+            }
+            return stars;
         }
-        let commentsLoaded=false;
-        function loadComments(){
-            if(commentsLoaded)return;commentsLoaded=true;
-            fetch(CSV_URL).then(r=>r.text()).then(t=>renderComments(parseCSV(t)))
-                .catch(()=>{document.getElementById('loading').textContent='No se pudieron cargar los comentarios.';});
+
+        let commentsLoaded = false;
+
+        function renderComments() {
+            if (commentsLoaded) return;
+            commentsLoaded = true;
+            
+            const container = document.getElementById("commentsContainer");
+            const loading = document.getElementById("loading");
+
+            // Simulamos un pequeño tiempo de carga visual
+            setTimeout(() => {
+                loading.style.display = "none";
+                
+                // Forzamos el promedio a 4.8 para que coincida con el Hero
+                const avg = "4.8"; 
+                
+                document.getElementById("overallRating").textContent = avg;
+                document.getElementById("overallStars").textContent = createStars(Math.round(parseFloat(avg)));
+                document.getElementById("totalReviews").textContent = `${commentsData.length} reseñas`;
+
+                if (commentsData.length === 0) {
+                    container.innerHTML = '<div class="no-comments">No hay comentarios disponibles</div>';
+                } else {
+                    // Nota: Se quitó la div con clase "comment-date"
+                    container.innerHTML = commentsData.map(e => `
+                        <div class="comment fade-in">
+                            <div class="comment-header">
+                                <div class="user-info">
+                                    <div class="user-avatar">${getInitials(e.name)}</div>
+                                    <div class="user-details">
+                                        <h3>${e.name}</h3>
+                                    </div>
+                                </div>
+                                <div class="comment-rating">
+                                    <span class="stars">${createStars(e.rating)}</span>
+                                    <span class="rating-value">${e.rating}</span>
+                                </div>
+                            </div>
+                            <div class="comment-text">${e.comment || "Sin comentario adicional"}</div>
+                        </div>
+                    `).join("");
+                }
+            }, 300);
         }
-        document.addEventListener('DOMContentLoaded',()=>{
-            const obs=new IntersectionObserver(entries=>{
-                entries.forEach(e=>{if(e.isIntersecting){loadComments();obs.unobserve(e.target);}});
-            },{rootMargin:'200px',threshold:0.1});
-            obs.observe(document.querySelector('.reviews-section'));
+
+        // Lazy load para los comentarios
+        document.addEventListener("DOMContentLoaded", function() {
+            const section = document.querySelector(".reviews-section");
+            const obs = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        renderComments();
+                        obs.unobserve(entry.target);
+                    }
+                });
+            }, { rootMargin: "200px", threshold: 0.1 });
+            
+            if (section) obs.observe(section);
         });
     </script>
 
-    <!-- Meta CAPI via Cloudflare Worker + deduplicación con event_id -->
+    <!-- Meta CAPI via Cloudflare Worker -->
     <script>
     (function(){
         'use strict';
-
         const WORKER_URL = 'https://meta-capi.cursodiegogaona.workers.dev';
         const SCROLL_PERCENTAGE = 75;
         let scrollEventSent = false;
-
-        // --- Helpers ---
-        function getCookie(name){
-            const m=document.cookie.match(new RegExp('(^| )'+name+'=([^;]+)'));
-            return m?decodeURIComponent(m[2]):null;
-        }
-        function getFbc(){
-            const fbclid=new URLSearchParams(window.location.search).get('fbclid');
-            if(fbclid)return 'fb.1.'+Date.now()+'.'+fbclid;
-            return getCookie('_fbc')||null;
-        }
-        function generateOrderCode(){
-            const chars='ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
-            let code='PL-';
-            for(let i=0;i<5;i++)code+=chars.charAt(Math.floor(Math.random()*chars.length));
-            return code;
-        }
-        function getOrCreateOrderCode(){
-            const stored=localStorage.getItem('order_code');
-            if(stored)return stored;
-            const newCode=generateOrderCode();
-            localStorage.setItem('order_code',newCode);
-            return newCode;
-        }
-        async function getGeoData(){
-            try{
-                const data=await fetch('https://ipapi.co/json/').then(r=>r.json());
-                return{
-                    client_ip:     data.ip           ||null,
-                    geo_ciudad:    data.city         ||null,
-                    geo_region:    data.region       ||null,
-                    geo_pais:      data.country_name ||null,
-                    geo_pais_code: data.country      ||null,
-                    geo_cp:        data.postal       ||null,
-                };
-            }catch(e){
-                return{client_ip:null,geo_ciudad:null,geo_region:null,geo_pais:null,geo_pais_code:null,geo_cp:null};
-            }
-        }
-        async function sendToWorker(payload){
-            try{
-                const res=await fetch(WORKER_URL,{
-                    method:'POST',
-                    headers:{'Content-Type':'application/json'},
-                    body:JSON.stringify(payload)
-                });
-                const json=await res.json();
-                console.log('✅ Worker ('+payload.evento+'):', json);
-            }catch(e){
-                console.error('❌ Error Worker:',e);
-            }
-        }
-
-        // --- EVENTO 1: PageView — browser + servidor con mismo event_id ---
+        function getCookie(name){const m=document.cookie.match(new RegExp('(^| )'+name+'=([^;]+)'));return m?decodeURIComponent(m[2]):null;}
+        function getFbc(){const fbclid=new URLSearchParams(window.location.search).get('fbclid');if(fbclid)return 'fb.1.'+Date.now()+'.'+fbclid;return getCookie('_fbc')||null;}
+        function generateOrderCode(){const chars='ABCDEFGHJKLMNPQRSTUVWXYZ23456789';let code='PL-';for(let i=0;i<5;i++)code+=chars.charAt(Math.floor(Math.random()*chars.length));return code;}
+        function getOrCreateOrderCode(){const stored=localStorage.getItem('order_code');if(stored)return stored;const newCode=generateOrderCode();localStorage.setItem('order_code',newCode);return newCode;}
+        async function getGeoData(){try{const data=await fetch('https://ipapi.co/json/').then(r=>r.json());return{client_ip:data.ip||null,geo_ciudad:data.city||null,geo_region:data.region||null,geo_pais:data.country_name||null,geo_pais_code:data.country||null,geo_cp:data.postal||null};}catch(e){return{client_ip:null,geo_ciudad:null,geo_region:null,geo_pais:null,geo_pais_code:null,geo_cp:null};}}
+        async function sendToWorker(payload){try{const res=await fetch(WORKER_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});const json=await res.json();console.log('✅ Worker ('+payload.evento+'):', json);}catch(e){console.error('❌ Error Worker:',e);}}
         async function sendPageView(){
             if(sessionStorage.getItem('pageview_enviado'))return;
             sessionStorage.setItem('pageview_enviado','true');
-
-            const ORDER_CODE = getOrCreateOrderCode();
-            // event_id único para esta visita — permite deduplicación en Meta
-            const EVENT_ID = ORDER_CODE + '-PV-' + Date.now();
-
-            const geo = await getGeoData();
-
-            // 1. Browser — con event_id para que Meta pueda deduplicar
-            if(typeof fbq==='function'){
-                fbq('track', 'PageView', {}, { eventID: EVENT_ID });
-                console.log('📡 PageView browser enviado. event_id:', EVENT_ID);
-            }
-
-            // 2. Servidor via Worker — mismo event_id
-            await sendToWorker({
-                evento:            'PageView',
-                event_id:          EVENT_ID,
-                order_code:        ORDER_CODE,
-                producto:          'Paquete Planos PDF - Landing',
-                valor:             0,
-                moneda:            'MXN',
-                fbp:               getCookie('_fbp')||null,
-                fbc:               getFbc(),
-                client_ip:         geo.client_ip,
-                client_user_agent: navigator.userAgent,
-                geo_ciudad:        geo.geo_ciudad,
-                geo_region:        geo.geo_region,
-                geo_pais:          geo.geo_pais,
-                geo_pais_code:     geo.geo_pais_code,
-                geo_cp:            geo.geo_cp,
-            });
+            const ORDER_CODE=getOrCreateOrderCode();
+            const EVENT_ID=ORDER_CODE+'-PV-'+Date.now();
+            const geo=await getGeoData();
+            if(typeof fbq==='function'){fbq('track','PageView',{},{eventID:EVENT_ID});}
+            await sendToWorker({evento:'PageView',event_id:EVENT_ID,order_code:ORDER_CODE,producto:'Paquete Planos PDF - Landing',valor:0,moneda:'MXN',fbp:getCookie('_fbp')||null,fbc:getFbc(),client_ip:geo.client_ip,client_user_agent:navigator.userAgent,geo_ciudad:geo.geo_ciudad,geo_region:geo.geo_region,geo_pais:geo.geo_pais,geo_pais_code:geo.geo_pais_code,geo_cp:geo.geo_cp});
         }
-
-        // --- EVENTO 2: ViewContent al 75% — browser + servidor con mismo event_id ---
         async function sendViewContent(){
             if(localStorage.getItem('scroll_75_enviado'))return;
             if(scrollEventSent)return;
             scrollEventSent=true;
             localStorage.setItem('scroll_75_enviado','true');
-
-            const ORDER_CODE = getOrCreateOrderCode();
-            const EVENT_ID = ORDER_CODE + '-VC';
-
-            const geo = await getGeoData();
-
-            // 1. Browser
-            if(typeof fbq==='function'){
-                fbq('track', 'ViewContent',
-                    { content_name:'Paquete Planos PDF - Lectura 75%', value:60, currency:'MXN' },
-                    { eventID: EVENT_ID }
-                );
-                console.log('📡 ViewContent browser enviado. event_id:', EVENT_ID);
-            }
-
-            // 2. Servidor via Worker — mismo event_id
-            await sendToWorker({
-                evento:            'ViewContent',
-                event_id:          EVENT_ID,
-                order_code:        ORDER_CODE,
-                producto:          'Paquete Planos PDF - Lectura 75%',
-                valor:             60,
-                moneda:            'MXN',
-                fbp:               getCookie('_fbp')||null,
-                fbc:               getFbc(),
-                client_ip:         geo.client_ip,
-                client_user_agent: navigator.userAgent,
-                geo_ciudad:        geo.geo_ciudad,
-                geo_region:        geo.geo_region,
-                geo_pais:          geo.geo_pais,
-                geo_pais_code:     geo.geo_pais_code,
-                geo_cp:            geo.geo_cp,
-            });
+            const ORDER_CODE=getOrCreateOrderCode();
+            const EVENT_ID=ORDER_CODE+'-VC';
+            const geo=await getGeoData();
+            if(typeof fbq==='function'){fbq('track','ViewContent',{content_name:'Paquete Planos PDF - Lectura 75%',value:69,currency:'MXN'},{eventID:EVENT_ID});}
+            await sendToWorker({evento:'ViewContent',event_id:EVENT_ID,order_code:ORDER_CODE,producto:'Paquete Planos PDF - Lectura 75%',valor:69,moneda:'MXN',fbp:getCookie('_fbp')||null,fbc:getFbc(),client_ip:geo.client_ip,client_user_agent:navigator.userAgent,geo_ciudad:geo.geo_ciudad,geo_region:geo.geo_region,geo_pais:geo.geo_pais,geo_pais_code:geo.geo_pais_code,geo_cp:geo.geo_cp});
         }
-
-        // --- Scroll listener ---
-        function calcScroll(){
-            const dH=document.documentElement.scrollHeight-window.innerHeight;
-            return dH>0?Math.round((window.pageYOffset/dH)*100):0;
-        }
-        function handleScroll(){
-            if(scrollEventSent||localStorage.getItem('scroll_75_enviado'))return;
-            if(calcScroll()>=SCROLL_PERCENTAGE){
-                sendViewContent();
-                window.removeEventListener('scroll',handleScroll);
-            }
-        }
-
-        // --- Init ---
+        function calcScroll(){const dH=document.documentElement.scrollHeight-window.innerHeight;return dH>0?Math.round((window.pageYOffset/dH)*100):0;}
+        function handleScroll(){if(scrollEventSent||localStorage.getItem('scroll_75_enviado'))return;if(calcScroll()>=SCROLL_PERCENTAGE){sendViewContent();window.removeEventListener('scroll',handleScroll);}}
         window.addEventListener('load', sendPageView);
         window.addEventListener('scroll', handleScroll);
         handleScroll();
-
     })();
     </script>
 
