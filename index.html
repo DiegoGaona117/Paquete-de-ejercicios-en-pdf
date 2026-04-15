@@ -25,12 +25,12 @@
         s.parentNode.insertBefore(t,s)}(window, document,'script',
         'https://connect.facebook.net/en_US/fbevents.js');
         fbq('init', '373277814132384');
+        fbq('track', 'PageView');
     </script>
     <noscript>
         <img height="1" width="1" style="display:none"
         src="https://www.facebook.com/tr?id=373277814132384&ev=PageView&noscript=1" alt="Meta Pixel"/>
     </noscript>
-
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-RN68VLQLTW"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -239,7 +239,6 @@
 <body>
     <div class="main-container">
 
-        <!-- Hero Section -->
         <section class="hero-section">
             <div class="hero-content">
                 <h1>Paquete de dibujos en PDF + Piezas + Ensambles</h1>
@@ -271,7 +270,6 @@
             </div>
         </section>
 
-        <!-- Package Info -->
         <section class="feature-card package-info">
             <ul class="package-list">
                 <li>
@@ -312,7 +310,6 @@
             </div>
         </section>
 
-        <!-- Plans Showcase -->
         <div class="plans-showcase">
             <p class="subtitle"><strong>Planos en PDF que incluye este paquete</strong></p>
             <picture>
@@ -325,12 +322,8 @@
             <div class="image-overlay"></div>
         </div>
 
-        <!-- =============================================
-             CROSS-SELL: Paquete con videos
-             ============================================= -->
         <div class="crosssell-block">
 
-            <!-- Lado izquierdo: Copy -->
             <div class="crosssell-left">
                 <span class="crosssell-eyebrow">
                     También te puede interesar
@@ -354,7 +347,6 @@
                     <span class="pill">🔄 Acceso de por vida</span>
                 </div>
 
-                <!-- Botón con evento InitiateCheckout -->
                 <a href="https://diegogaona117.github.io/Paquete-de-ejercicios-en-pdf-ars/"
                    target="_blank"
                    rel="noopener noreferrer"
@@ -366,9 +358,6 @@
             </div>
 
         </div>
-        <!-- FIN CROSS-SELL -->
-
-        <!-- Reviews Section -->
         <section class="reviews-section">
             <div class="reviews-container">
                 <header class="reviews-header"><h2>Comentarios</h2></header>
@@ -388,7 +377,6 @@
 
     </div>
 
-    <!-- Comentarios fijos -->
     <script>
         const commentsData = [
             {id:1,name:"Leonardo Rodríguez",rating:5.0,comment:"Me ha parecido mucho mejor el paquete que tiene los videos, asi si tengo alguna duda solo le doy clic y veo, y continuo, si me surge otra duda veo solo esa parte"},
@@ -525,47 +513,5 @@
             if (section) obs.observe(section);
         });
     </script>
-
-    <!-- Meta CAPI via Cloudflare Worker -->
-    <script>
-    (function(){
-        'use strict';
-        const WORKER_URL = 'https://meta-capi.cursodiegogaona.workers.dev';
-        const SCROLL_PERCENTAGE = 75;
-        let scrollEventSent = false;
-        function getCookie(name){const m=document.cookie.match(new RegExp('(^| )'+name+'=([^;]+)'));return m?decodeURIComponent(m[2]):null;}
-        function getFbc(){const fbclid=new URLSearchParams(window.location.search).get('fbclid');if(fbclid)return 'fb.1.'+Date.now()+'.'+fbclid;return getCookie('_fbc')||null;}
-        function generateOrderCode(){const chars='ABCDEFGHJKLMNPQRSTUVWXYZ23456789';let code='PL-';for(let i=0;i<5;i++)code+=chars.charAt(Math.floor(Math.random()*chars.length));return code;}
-        function getOrCreateOrderCode(){const stored=localStorage.getItem('order_code');if(stored)return stored;const newCode=generateOrderCode();localStorage.setItem('order_code',newCode);return newCode;}
-        async function getGeoData(){try{const data=await fetch('https://ipapi.co/json/').then(r=>r.json());return{client_ip:data.ip||null,geo_ciudad:data.city||null,geo_region:data.region||null,geo_pais:data.country_name||null,geo_pais_code:data.country||null,geo_cp:data.postal||null};}catch(e){return{client_ip:null,geo_ciudad:null,geo_region:null,geo_pais:null,geo_pais_code:null,geo_cp:null};}}
-        async function sendToWorker(payload){try{const res=await fetch(WORKER_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});const json=await res.json();console.log('✅ Worker ('+payload.evento+'):', json);}catch(e){console.error('❌ Error Worker:',e);}}
-        async function sendPageView(){
-            if(sessionStorage.getItem('pageview_enviado'))return;
-            sessionStorage.setItem('pageview_enviado','true');
-            const ORDER_CODE=getOrCreateOrderCode();
-            const EVENT_ID=ORDER_CODE+'-PV-'+Date.now();
-            const geo=await getGeoData();
-            if(typeof fbq==='function'){fbq('track','PageView',{},{eventID:EVENT_ID});}
-            await sendToWorker({evento:'PageView',event_id:EVENT_ID,order_code:ORDER_CODE,producto:'Paquete Planos PDF - Landing',valor:0,moneda:'MXN',fbp:getCookie('_fbp')||null,fbc:getFbc(),client_ip:geo.client_ip,client_user_agent:navigator.userAgent,geo_ciudad:geo.geo_ciudad,geo_region:geo.geo_region,geo_pais:geo.geo_pais,geo_pais_code:geo.geo_pais_code,geo_cp:geo.geo_cp});
-        }
-        async function sendViewContent(){
-            if(localStorage.getItem('scroll_75_enviado'))return;
-            if(scrollEventSent)return;
-            scrollEventSent=true;
-            localStorage.setItem('scroll_75_enviado','true');
-            const ORDER_CODE=getOrCreateOrderCode();
-            const EVENT_ID=ORDER_CODE+'-VC';
-            const geo=await getGeoData();
-            if(typeof fbq==='function'){fbq('track','ViewContent',{content_name:'Paquete Planos PDF - Lectura 75%',value:69,currency:'MXN'},{eventID:EVENT_ID});}
-            await sendToWorker({evento:'ViewContent',event_id:EVENT_ID,order_code:ORDER_CODE,producto:'Paquete Planos PDF - Lectura 75%',valor:69,moneda:'MXN',fbp:getCookie('_fbp')||null,fbc:getFbc(),client_ip:geo.client_ip,client_user_agent:navigator.userAgent,geo_ciudad:geo.geo_ciudad,geo_region:geo.geo_region,geo_pais:geo.geo_pais,geo_pais_code:geo.geo_pais_code,geo_cp:geo.geo_cp});
-        }
-        function calcScroll(){const dH=document.documentElement.scrollHeight-window.innerHeight;return dH>0?Math.round((window.pageYOffset/dH)*100):0;}
-        function handleScroll(){if(scrollEventSent||localStorage.getItem('scroll_75_enviado'))return;if(calcScroll()>=SCROLL_PERCENTAGE){sendViewContent();window.removeEventListener('scroll',handleScroll);}}
-        window.addEventListener('load', sendPageView);
-        window.addEventListener('scroll', handleScroll);
-        handleScroll();
-    })();
-    </script>
-
 </body>
 </html>
